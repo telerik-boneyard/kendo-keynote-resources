@@ -1,0 +1,41 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title></title>
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/styles/kendo.mobile.all.min.css")
+</head>
+<body>
+
+    <div data-role="layout" data-id="main">
+        <div data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+            </div>
+        </div>
+        <div data-role="footer">
+            <div data-role="tabstrip">
+                <a href="home" data-icon="home">Feed</a>
+                <a href="friends" data-icon="contacts">Friends</a>
+                <a href="upload" data-icon="action">Upload</a>
+                <a href="settings" data-icon="settings">Settings</a>
+            </div>
+        </div>
+    </div>
+
+    @RenderBody()
+
+    @Scripts.Render("~/Scripts/jquery.min.js")
+    @Scripts.Render("~/Scripts/kendo.all.min.js")
+    @Scripts.Render("~/bundles/app")
+
+    <script>
+
+        var app = new kendo.mobile.Application(document.body, { platform: "wp", serverNavigation: true });
+
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿@model IEnumerable<Instaclone.Models.Feed>
+
+<div data-role="view" data-title="Feed" data-layout="main" id="home">
+    <ul data-role="listview">
+        @foreach (var item in Model)
+        {
+            <div width="100%" style="text-align: center;">
+                <img width="350" height="350" src=" @item.ImageURL " />
+                <div style="text-align: left">
+                    <p>
+                        <a data-role="button" data-icon="favorites">@item.Likes</a>
+                        <a data-role="button" href="\\#comments?id=@item.FeedID" data-icon="compose">@item.Comments.Count()</a>
+                    </p>
+                </div>
+            </div>
+        }
+    </ul>
+</div>
+

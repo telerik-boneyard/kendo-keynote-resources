@@ -1,0 +1,131 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="Content/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div data-role="view" data-title="Feed" data-layout="main" id="home">
+        <ul data-role="listview" data-source="APP.feed" data-template="feedTemplate">
+        </ul>
+    </div>
+
+    <script type="text/x-kendo-template" id="feedTemplate">
+        <div width="100%" style="text-align: center;">
+            <img width="400" height="400" src="#: ImageURL #" />
+            <div style="text-align: left">
+                <p>
+                    <a data-role="button" data-icon="favorites">#: Likes #</a>
+                    <a data-role="button" href="\\#comments?id=#: FeedID #" data-icon="compose">#: Comments.length #</a>
+                </p>
+            </div>
+        </div>
+    </script>
+
+    <div data-role="view" data-title="Comments" data-show="APP.commentsShow" data-transition="overlay:up"
+        id="comments">
+        <div data-role="header">
+            <div data-role="navbar">
+                <span>Comments</span>
+                <a data-role="button" href="#home" data-align="right">Cancel</a>
+            </div>
+        </div>
+        <h2>Other people said...</h2>
+        <ul data-role="listview" data-source="APP.comments" data-template="commentsTemplate" data-style="inset" data-auto-bind="false"></ul>
+        <h2>New Comment</h2>
+        <ul data-role="listview" data-style="inset">
+            <li>Comment
+            <textarea id="comment" placeholder="Comment"></textarea>
+            </li>
+        </ul>
+        <div style="margin-left: 15px; margin-right: 40px;">
+            <a style="width: 100%;" data-role="button" data-click="APP.addComment" data-icon="add">Add Comment</a>
+        </div>
+    </div>
+
+    <div data-role="view" id="upload" data-layout="main" title="Upload">
+        <h2>Select A File To Upload</h2>
+        <p>
+            <a data-role="button">Select</a>
+        </p>
+
+    </div>
+
+    <div data-role="view" id="settings" data-title="Settings" data-layout="main">
+        <h2>Sharing</h2>
+        <ul data-role="listview" data-style="inset">
+            <li>Share to Twitter
+            <input data-role="switch" />
+            </li>
+            <li>Share to Facebook
+            <input data-role="switch" />
+            </li>
+        </ul>
+        <h2>Notifications</h2>
+        <ul data-role="listview" data-style="inset">
+            <li>Notify Me
+            <select data-role="dropdownlist">
+                <option value="0">Daily</option>
+                <option value="1">Weekly</option>
+                <option value="2">Never</option>
+            </select>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/x-kendo-template" id="commentsTemplate">
+    #: Text #
+    </script>
+
+    <div id="friends" data-role="view" data-layout="main" data-title="Friends">
+        <ul data-role="buttongroup" data-index="1">
+            <li>Besties
+            </li>
+            <li>Frenemies
+            </li>
+        </ul>
+        <ul data-role="listview" data-style="inset">
+            <li>Todd<a data-role="detailbutton" data-style="rowdelete" data-click="APP.removeFriend"></a></li>
+            <li>Korchev<a data-role="detailbutton" data-style="rowdelete" data-click="APP.removeFriend"></a></li>
+            <li>Brandon<a data-role="detailbutton" data-style="rowdelete" data-click="APP.removeFriend"></a></li>
+            <li>Rob<a data-role="detailbutton" data-style="rowdelete" data-click="APP.removeFriend"></a></li>
+            <li>Derick<a data-role="detailbutton" data-style="rowdelete" data-click="APP.removeFriend"></a></li>
+            <li>Petyo<a data-role="detailbutton" data-style="rowdelete" data-click="APP.removeFriend"></a></li>
+            <li>Kamen<a data-role="detailbutton" data-style="rowdelete" data-click="APP.removeFriend"></a></li>
+        </ul>
+    </div>
+
+    <div data-role="layout" data-id="main">
+        <div data-role="header">
+            <div data-role="navbar">
+                <span data-role="view-title"></span>
+            </div>
+        </div>
+        <div data-role="footer">
+            <div data-role="tabstrip">
+                <a href="#home" data-icon="home">Feed</a>
+                <a href="#friends" data-icon="contacts">Friends</a>
+                <a href="#upload" data-icon="action">Upload</a>
+                <a href="#settings" data-icon="settings">Settings</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="Scripts/jquery.min.js"></script>
+    <script src="Scripts/kendo.mobile.min.js"></script>
+    <script src="Scripts/app/app.js"></script>
+
+    <script>
+
+        (function () {
+
+            window.APP = window.APP || {};
+            window.APP.app = new kendo.mobile.Application(document.body, { platform: "wp" });
+
+        }());
+
+    </script>
+
+</body>
+</html>

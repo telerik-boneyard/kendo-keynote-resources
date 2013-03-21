@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instaclone", "Instaclone\Instaclone.csproj", "{F9E23088-EDD0-46C5-8E83-1CC013FEA659}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Instaclone.App", "Instaclone.App\Instaclone.App.csproj", "{1139A5ED-742E-4CF0-9F82-5BF648354272}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F9E23088-EDD0-46C5-8E83-1CC013FEA659}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F9E23088-EDD0-46C5-8E83-1CC013FEA659}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F9E23088-EDD0-46C5-8E83-1CC013FEA659}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F9E23088-EDD0-46C5-8E83-1CC013FEA659}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1139A5ED-742E-4CF0-9F82-5BF648354272}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1139A5ED-742E-4CF0-9F82-5BF648354272}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1139A5ED-742E-4CF0-9F82-5BF648354272}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1139A5ED-742E-4CF0-9F82-5BF648354272}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

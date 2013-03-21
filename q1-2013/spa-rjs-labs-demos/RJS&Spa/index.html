@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>RJS &amp; SPA Example</title>
+  <link href="stylesheets/lib/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/lib/kendo.default.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="stylesheets/main.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="brand">
+          <a href="#">Brandon's Important Projects</a>
+        </span>
+        <ul class="nav">
+          <li>
+            <a href="#">Projects</a>
+          </li>
+          <li>
+            <a href="#">Tasks</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container body">
+    <div class="row">
+      <div class="span3">
+        <ul class="nav nav-list sidebar">
+          <li class="nav-header">Admin</li>
+          <a href="#/reports">Reports</reports>          
+        </ul>
+        <ul class="nav nav-list sidebar">
+          <li class="nav-header">Filters</li>
+          <li>
+            <a href="#">All Projects</a>            
+          </li>
+           <li class="active">
+            <a href="#">Active Projects</a>            
+          </li>
+           <li>
+            <a href="#">Closed Projects</a>            
+          </li>
+           <li>
+            <a href="#">Burke's Crazy Ideas</a>            
+          </li>
+        </ul>
+      </div>
+      <div class="span9">
+        <div id="projectsContainer"></div>
+
+        <div id="projectLayout">
+          <div id="display"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- Views -->
+    <script id="projectsListView" type="text/x-kendo-tmpl">
+      <h2>Active Projects <a href="#/new"><i class="icon-plus-sign"></i></a></h2>
+        <ul id="projectsList" class="well" 
+          data-role="listview" 
+          data-source="ProjectsApp.projectsSource" 
+          data-template="projectItemTemplate" ></ul>
+    </script>
+
+    <script id="newProjectView" type="text/x-kendo-tmpl">
+      <h2>New Project</h2>
+        <form name="myForm" class="well">
+          <div class="control-group">
+            <label>Project Name</label>
+            <input type="text" class="k-input" name="name">      
+          </div>
+          <div class="control-group">
+            <label>Category</label>
+            <input type="text" 
+              data-role="autocomplete" 
+              data-source="ProjectsApp.catsSource"> 
+          </div>
+          <div class="control-group">
+            <label>Due Date</label>
+            <input type="date" 
+              data-role="datepicker" >
+          </div>
+          <br>
+            <a href="#/" class="cancel btn">Cancel</a>
+            <a href="#/save" class="save btn btn-primary">Save</a>
+        </form>
+    </script>
+
+    <script id="reportsView" type="text/x-kendo-tmpl">
+      <h3>Project Completion Statistics</h3>
+      <div>
+        Projects Completed per Week <span id="completed-week"></span><br />
+        New Projects Created per Week <span id="created-week"></span>
+      </div>
+      <h3>Project Completion Goals</h3>
+      <div>
+        Projects Completed per Week <span id="goal-completed"></span><br />
+        New Projects Created per Week <span id="goal-created"></span>
+      </div>
+    </script>
+
+    <!-- Templates -->
+    <script id="projectItemTemplate" type="text/x-kendo-tmpl">
+        <li>
+            # if (done) { #
+              <input type="checkbox" checked />
+            # } else { #
+              <input type="checkbox" />
+            # } #
+            <span>[#= category #] #= description # (due #= due #)</span>            
+        </li>
+    </script>
+
+    <!-- Add RequireJS -->
+    <script data-main="javascripts/lib/jquery.min.js"
+        src="http://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.1/require.min.js">
+    </script>
+
+    <script src="javascripts/lib/moment.min.js"></script>
+    <script src="javascripts/projectData.js"></script>
+    <script src="javascripts/app.js"></script>
+</body>
+</html>

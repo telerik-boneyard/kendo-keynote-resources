@@ -1,0 +1,7 @@
+<h2>Active Projects <a href="#/new"><i class="icon-plus-sign"></i></a></h2>        
+<ul id="projectsList" class="well">
+  <li ng-repeat="project in projects">
+      <input type="checkbox" ng-model="project.done" />
+      <span>[{{project.category}}] {{project.description}} (due {{project.due}})</span>            
+  </li>
+</ul>

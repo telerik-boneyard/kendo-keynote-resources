@@ -1,0 +1,21 @@
+<h2>Active Projects <a href="#/new"><i class="icon-plus-sign"></i></a></h2>        
+<form name="myForm">
+  <div class="control-group">
+    <label>Project Name</label>
+    <input type="text" class="k-input" name="name">      
+  </div>
+  <div class="control-group">
+    <label>Category</label>
+    <!-- Create Kendo Autocomplete -->
+    <input type="text" data-kendo data-role="autocomplete" 
+      data-model="model" data-bind="source: categories"> 
+  </div>
+  <div class="control-group">
+    <label>Due Date</label>
+    <!-- Create Kendo DatePicker -->
+    <input type="date" data-kendo data-role="datepicker" >
+  </div>
+  <br>
+    <a href="#/" class="cancel btn">Cancel</a>
+    <button ng-click="save()" class="save btn btn-primary">Save</button>
+</form>

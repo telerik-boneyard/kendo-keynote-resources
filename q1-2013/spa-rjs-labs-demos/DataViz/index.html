@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Projects</title>
+  <link href="stylesheets/lib/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/lib/kendo.default.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="stylesheets/main.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="brand">
+          <a href="#">Brandon's Important Projects</a>
+        </span>
+        <ul class="nav">
+          <li>
+            <a href="#">Projects</a>
+          </li>
+          <li>
+            <a href="#">Tasks</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container body">
+    <div class="row">
+      <div class="span3">
+        <ul class="nav nav-list sidebar">
+          <li class="nav-header">Admin</li>
+          <a href="#/reports">Reports</reports>          
+        </ul>
+        <ul class="nav nav-list sidebar">
+          <li class="nav-header">Filters</li>
+          <li>
+            <a href="#">All Projects</a>            
+          </li>
+          <li>
+            <a href="#">Active Projects</a>            
+          </li>
+           <li>
+            <a href="#">Closed Projects</a>            
+          </li>
+           <li>
+            <a href="#">Burke's Crazy Ideas</a>            
+          </li>
+        </ul>
+      </div>
+      <div class="span9">
+        <div id="projectsContainer">
+          <h2>Active Projects <a href="#/new"><i class="icon-plus-sign"></i></a></h2>
+          <ul id="projectsList" class="well"></ul>
+        </div>
+
+        <div id="newContainer" class="hidden">
+          <h2>Active Projects <a href="#/new"><i class="icon-plus-sign"></i></a></h2>
+          <form name="myForm" class="well">
+            <div class="control-group">
+              <label>Project Name</label>
+              <input type="text" class="k-input" name="name">      
+            </div>
+            <div class="control-group">
+              <label>Category</label>
+              <input type="text" data-role="autocomplete" data-source="ProjectsApp.catsSource"> 
+            </div>
+            <div class="control-group">
+              <label>Due Date</label>
+              <input type="date" data-role="datepicker" >
+            </div>
+            <br>
+              <a href="#/" class="cancel btn">Cancel</a>
+              <button class="save btn btn-primary">Save</button>
+          </form>
+        </div>
+
+        <div id="projectReports" class="hidden">
+          <h2>Project Reports</h2>
+          <div>
+            <h3>Project Completion Statistics</h3>
+            <table class="history">
+              <tr>
+                <td>Projects Completed per Week</td>
+                <td><span id="completed-week"></span></td>
+              </tr>
+              <tr>
+                <td>New Projects Created per Week </td>
+                <td><span id="created-week"></span></td>
+              </tr>
+            </table>
+
+            <h3>Project Completion Goals</h3>
+            <table class="history">
+              <tr>
+                <td>Projects Completed this Week</td>
+                <td><div id="goal-completed"></div><td>
+              </tr>              
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Templates -->
+    <script id="projectItemTemplate" type="text/x-kendo-tmpl">
+        <li>
+            # if (done) { #
+              <input type="checkbox" checked />
+            # } else { #
+              <input type="checkbox" />
+            # } #
+            <span>[#= category #] #= description # (due #= due #)</span>            
+        </li>
+    </script>
+  
+  <script src="javascripts/lib/jquery.min.js"></script>
+  <script src="javascripts/lib/kendo.all.min.js"></script>
+    <script src="javascripts/lib/moment.min.js"></script>
+  <script src="javascripts/projectData.js"></script>
+  <script src="javascripts/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+.body {
+	margin-top: 20px;
+}
+
+.hidden {
+	position: absolute;
+	left: -9999px;
+}
+
+ul li {
+	list-style: none;
+	margin: 5px;
+}
+
+.history td.item {
+    line-height: 65px;
+    width: 20px;
+    text-align: right;
+    padding-bottom: 22px;
+}
+
+.history td.chart {
+    width: 430px;
+}
+.history .k-chart {
+    height: 65px;
+    width: 400px;
+}

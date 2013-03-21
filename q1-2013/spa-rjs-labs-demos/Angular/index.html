@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en" ng-app="project">
+<head>
+  <meta charset="UTF-8">
+  <title>Angular Kendo</title>
+  <link href="stylesheets/lib/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/lib/kendo.default.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+  <link rel="stylesheet" href="stylesheets/main.css">  
+</head>
+<body>
+
+  <!-- Navbar -->
+  <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <span class="brand">
+          <a href="#">Brandon's Important Projects</a>
+        </span>
+        <ul class="nav">
+          <li>
+            <a href="#">Projects</a>
+          </li>
+          <li>
+            <a href="#">Tasks</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="container body">
+    <div class="row">
+      <div class="span3">
+        <ul class="nav nav-list sidebar">
+          <li class="nav-header">Admin</li>
+          <a href="#/reports">Reports</reports>          
+        </ul>
+        <ul class="nav nav-list sidebar">
+          <li class="nav-header">Filters</li>
+          <li>
+            <a href="#">All Projects</a>            
+          </li>
+           <li class="active">
+            <a href="#">Active Projects</a>            
+          </li>
+           <li>
+            <a href="#">Closed Projects</a>            
+          </li>
+           <li>
+            <a href="#">Burke's Crazy Ideas</a>            
+          </li>
+        </ul>
+      </div>
+      <div class="span9">
+        <div ng-view></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="javascripts/lib/jquery.min.js"></script>
+  <script src="javascripts/lib/kendo.all.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.5/angular-resource.min.js"></script>
+  <!-- Include angular-kendo -->
+  <script src="javascripts/lib/angular-kendo.js"></script>
+
+  <script src="javascripts/lib/moment.min.js"></script>
+  <script src="javascripts/projectData.js"></script>
+  <script src="javascripts/project.js"></script>
+</body>
+</html>

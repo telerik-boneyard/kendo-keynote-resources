@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title><%= title %></title>
+  <!-- bootstrap -->
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.min.css" rel="stylesheet">
+  <!-- q2-kendo-css -->
+  <link href="stylesheets/kendo/kendo.common.min.css" rel="stylesheet">
+  <link href="stylesheets/kendo/kendo.default.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="stylesheets/style.css">
+</head>
+<body>
+
+	<!-- q2-navbar -->
+  <div class="navbar navbar-static-top">
+    <div class="navbar-inner">
+      <div class="container">
+        <a href="/" class="brand">Appointment Scheduler</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- q2-content -->
+  <div class="container">
+    <div class="row" id="legend"></div>
+    <div class="row">
+      <div id="schedule"></div>
+    </div>
+  </div>
+
+  <!-- q2-editor-template -->
+  <script type="text/x-kendo-templ" id="editor">
+    <div class="k-edit-form">
+      <div class="k-edit-field">
+        <h3>New Appointment</h3>
+      </div>
+      <div class="k-edit-label">
+        <label for="start">Time:</label>
+      </div>
+      <div class="k-edit-field">
+        <input data-role="datetimepicker" name="start">
+      </div>
+      <div class="k-edit-label">
+        <label for="description">Reason:</label>
+      </div>
+      <div class="k-edit-field">
+        <textarea class="k-textbox" name="description" placeholder="Please provide a brief reason for this visit"></textarea>
+      </div>
+      <div class="k-edit-label">
+        <label for="doctor">Doctor:</label>
+      </div>
+      <div class="k-edit-field">
+        <select data-role="dropdownlist" name="doctorId" data-text-field="name" data-value-field="_id" data-option-label="Select A Doctor" data-source="window.APP.doctors">
+        </select>
+      </div>
+    </div>
+  </script>
+
+  <!-- q2-legend-template -->
+  <script type="text/x-kendo-templ" id="doctors-legend">
+    <div class="span4" data-id="#: _id #">
+      <div class="span1 legend-color" style="background-color: #: color #"></div>
+      <div class="span2 legend-name"><h3>#: name #</h3></div>
+    </div>
+  </script>
+
+	<!-- q2-kendo-js -->
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="javascripts/kendo.all.min.js"></script>
+
+  <script>
+
+    $(function() {
+
+      window.APP = window.APP || {};
+      window.APP.doctors = new kendo.data.ObservableArray([]);
+      
+      var doctors = new kendo.data.DataSource({
+        transport: {
+          read: "doctors"
+        },
+        change: function(e) {
+          $.each(this.view(), function() {
+            window.APP.doctors.push(this);
+          });
+          kendo.fx("#legend").expand("vertical").duration(500).play();
+        }
+      });
+
+      var appointments = new kendo.data.SchedulerDataSource({
+        transport: {
+          read: "appointments"
+        },
+        schema: {
+          model: {
+            id: "_id",
+            fields: {
+              start: { field: "start", type: "date" },
+              end: { field: "end", type: "date" }
+            }
+          }
+        }
+      });
+
+      $('#schedule').kendoScheduler({
+        views: [
+          {
+            type: "day"
+          },
+          "week",
+          "month",
+          "agenda"
+        ],
+        dataSource: appointments,
+        startTime: new Date("2013/7/17 08:00"),
+        endTime: new Date("2013/7/17 17:00"),
+        allDaySlot: false,
+        resources: [{
+          field: "doctorId",
+          title: "Doctor",
+          dataTextField: "name",
+          dataValueField: "_id",
+          dataSource: doctors
+          //, multiple: true
+        }],
+        editable: {
+          template: $("#editor").html(),
+          update: false
+        }
+      });
+
+      var selectedDoctor = null;
+      $("#legend").kendoListView({
+        dataSource: window.APP.doctors,
+        template: $("#doctors-legend").html(),
+        selectable: true,
+        change: function(e) {
+          selected = e.sender.select().data("id");
+          if (selectedDoctor !== selected) {
+            var filter = { operator: "eq", field: "doctorId", value: selected }
+            appointments.filter([ filter ]);
+            selectedDoctor = selected;
+          }
+          else {
+            e.sender.clearSelection();
+            appointments.filter([]);
+          }
+        }
+      });
+
+    });
+
+  </script>
+
+</body>
+</html>	
+

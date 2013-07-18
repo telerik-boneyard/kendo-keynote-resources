@@ -1,0 +1,180 @@
+{
+    "id": "kendo_runner_admin",
+    "name": "kendo-runner-admin",
+    "requirejs": false,
+    "files": [
+        {
+            "id": "jquery",
+            "name": "kendo/js/jquery.min.js",
+            "type": "js",
+            "lib": true,
+            "deps": []
+        },
+        {
+            "id": "kendo",
+            "name": "kendo/js/kendo.all.min.js",
+            "type": "js",
+            "lib": true,
+            "deps": [
+                "jquery"
+            ]
+        },
+        {
+            "id": "less",
+            "name": "js/less-1.3.3.min.js",
+            "type": "js",
+            "lib": true,
+            "deps": []
+        },
+        {
+            "id": "coffeescript",
+            "name": "js/coffee-script.js",
+            "type": "js",
+            "lib": true,
+            "deps": []
+        },
+        {
+            "id": "kendo.common.css",
+            "name": "kendo/css/kendo.common.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": []
+        },
+        {
+            "id": "kendo.bootstrap.css",
+            "name": "kendo/css/kendo.bootstrap.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [
+                "kendo.common.css"
+            ]
+        },
+        {
+            "id": "kendo.uniform.css",
+            "name": "kendo/css/kendo.uniform.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [
+                "kendo.common.css"
+            ]
+        },
+        {
+            "id": "app.js",
+            "name": "js/app.js",
+            "type": "js",
+            "deps": [
+                "kendo",
+                "app.less"
+            ]
+        },
+        {
+            "id": "app.less",
+            "name": "css/app.less",
+            "type": "less",
+            "deps": []
+        },
+        {
+            "id": "main",
+            "name": "index.html",
+            "type": "html",
+            "page": true,
+            "deps": [
+                "kendo.bootstrap.css",
+                "3a7857ba-6dab-4a4a-af6a-68431a26d1ac",
+                "1e56da8d-e7e5-4d2c-93d4-8b6e64ecf11d",
+                "app.js",
+                "jquery",
+                "e080c718-6354-4af4-a882-d847ac153972",
+                "kendo"
+            ]
+        },
+        {
+            "id": "3a7857ba-6dab-4a4a-af6a-68431a26d1ac",
+            "name": "css/lib/bootstrap/bootstrap.css",
+            "type": "css",
+            "lib": true,
+            "page": false,
+            "remote": false,
+            "download": false,
+            "deps": []
+        },
+        {
+            "id": "1e56da8d-e7e5-4d2c-93d4-8b6e64ecf11d",
+            "name": "css/lib/bootstrap/bootstrap-responsive.min.css",
+            "type": "css",
+            "lib": true,
+            "page": false,
+            "remote": false,
+            "download": false,
+            "deps": []
+        },
+        {
+            "id": "fae08419-39da-4f6c-aa4f-fcd409175b0b",
+            "name": "js/foo.js",
+            "type": "js",
+            "lib": false,
+            "page": false,
+            "remote": false,
+            "download": false,
+            "deps": []
+        },
+        {
+            "id": "e080c718-6354-4af4-a882-d847ac153972",
+            "name": "libs/underscore.js",
+            "type": "js",
+            "lib": true,
+            "page": false,
+            "remote": true,
+            "url": "//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js",
+            "download": true,
+            "deps": []
+        },
+        {
+            "id": "1963c85e-99de-4136-a466-aba05a682a47",
+            "name": "moment.min.js",
+            "type": "js",
+            "lib": true,
+            "page": false,
+            "remote": true,
+            "url": "https://rawgithub.com/timrwood/moment/2.1.0/min/moment.min.js",
+            "download": false,
+            "deps": []
+        },
+        {
+            "id": "80c74656-21b6-4611-b9d7-f15ce067693a",
+            "name": "css/foo.css",
+            "type": "css",
+            "lib": false,
+            "page": false,
+            "remote": false,
+            "download": false,
+            "deps": []
+        },
+        {
+            "id": "ecdf9a46-bea4-4c1f-a692-0c9f07f8e858",
+            "name": "libs/angular.js",
+            "type": "js",
+            "lib": true,
+            "page": false,
+            "remote": true,
+            "url": "//cdnjs.cloudflare.com/ajax/libs/angular.js/1.1.3/angular.min.js",
+            "download": true,
+            "deps": []
+        },
+        {
+            "name": "kendo/kendo.custom.min.js",
+            "type": "js",
+            "lib": true,
+            "id": "kendo.custom"
+        }
+    ],
+    "path": "/Users/brandon/Dropbox/Development/kendo-runner-admin",
+    "manual_kendo_components": [
+        "panelbar",
+        "popup",
+        "reorderable",
+        "resizable",
+        "scheduler.agendaview",
+        "scheduler.dayview"
+    ]
+}

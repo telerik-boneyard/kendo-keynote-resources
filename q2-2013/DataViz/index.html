@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <title>kendo-runner-admin</title>
+    <!-- Inside the following comment marked with KENDO_BOOTSTRAPPER:FILES,
+         the bootstrapper will auto-load any files that this page depends
+         on.  Do not manually place anything there as it will be overwritten
+         when your project is built.  You may, however, remove this
+         note. -->
+
+    <!--KENDO_BOOTSTRAPPER:FILES--><link rel='stylesheet' href='kendo/css/kendo.common.min.css' />
+<link rel='stylesheet' href='kendo/css/kendo.bootstrap.min.css' />
+<link rel='stylesheet' href='css/lib/bootstrap/bootstrap.css' />
+<link rel='stylesheet' href='css/lib/bootstrap/bootstrap-responsive.min.css' />
+<link rel='stylesheet/less' href='css/app.less' />
+<script src='kendo/js/jquery.min.js'></script>
+<script src='kendo/js/kendo.all.min.js'></script>
+<script src='js/app.js'></script>
+<script src='//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.4.4/underscore-min.js'></script>
+<script src='js/less-1.3.3.min.js'></script><!--/KENDO_BOOTSTRAPPER:FILES-->
+    
+  </head>
+
+  <body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="brand" href="/">Kendo UI Runner Admin</a>
+          <div class="nav-collapse collapse">
+            <ul class="nav">
+              <li class="active"><a href="/index.html">Home</a>
+              <li><a href="#">Kendo UI Runner Mobile</a></li>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container-fluid">
+      <div class="row-fluid">
+        <div class="span3">
+          <div class="well sidebar-nav">
+            <ul class="nav nav-list">
+              <li class="nav-header">Data</li>
+              <li>
+                <a href="/shoes.html">Shoes</a>
+              </li>
+              <li>
+                <a href="/runs.html">Runs</a>
+              </li>              
+              <li class="nav-header">Reports</li>
+              <li>
+                <a href="/run-charts.html">Run Reports</a>
+              </li>
+              <li>
+                <a href="/shoe-charts.html">Shoe Reports</a>
+              </li> 
+            </ul>
+          </div>
+        </div>
+        <div class="span9">
+          <h1>Runner Admin</h1>
+          <p>
+            <div id="shoe-list"></div>
+          </p>
+          <p>            
+            <div id="radar"></div>
+          </p>
+          <p>
+            <span id="data-window"></span>
+          </p>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <footer><p> &copy; Telerik 2013</p></footer>
+  </body>
+
+  <script type="text/x-kendo-tmpl" id="shoe-template">
+      <div class="shoe" data-name="#: Name #">
+          <img src="#: Photo #" alt="#: Name # image" />
+          <h3>(#: Brand #) #: Name #</h3>
+      </div>
+  </script>
+
+  <script type="text/x-kendo-tmpl" id="data-template">
+      <h4>Current Mileage: #: CurrentMileage #</h4>
+      <h4>Maximum Mileage: #: MaxMileage #</h4>
+      <h4>ASIN: #: ASIN #</h4>
+
+      <div id="qrCode"></div>
+  </script>
+</html>

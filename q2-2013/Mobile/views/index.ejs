@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Kendo Runner</title>
+    
+    <link href="stylesheets/lib/kendo/kendo.common.min.css" rel="stylesheet" type="text/css" />
+    <link href="stylesheets/lib/kendo/kendo.mobile.all.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="stylesheets/style.css">
+
+    <!-- Scripts -->
+    <script src="javascripts/lib/jquery.min.js"></script>
+    <script src="javascripts/lib/kendo.all.min.js"></script>
+    <script src="javascripts/lib/everlive/everlive.all.min.js"></script>
+    <script src="javascripts/lib/moment.min.js"></script>
+    <script src="javascripts/app.js"></script>   
+</head>
+<body>
+	<div id="home" data-role="view" data-title="Kendo Runner" data-layout="runs-layout">
+		<ul id="runsList"></ul>
+	</div>
+	<div id="settings" data-role="view" data-title="Settings" data-layout="runs-layout"></div>
+
+<div data-role="layout" data-id="runs-layout">
+	  <div data-role="header">
+      <div data-role="navbar" id="navbar">        
+        <a data-role="button" data-rel="drawer" href="#my-drawer" data-icon="drawer-button" data-align="left"></a>
+        <span data-role="view-title"></span>
+      </div>
+	  </div>
+	  <div data-role="footer">
+	  	<div data-role="tabstrip">
+          <a data-icon="home" href="#home">Home</a>
+          <a data-icon="settings" href="#settings">Settings</a>
+      </div>
+	  </div>
+	</div>
+
+	<div id="shoes" data-role="view" data-title="Shoes" data-layout="runs-layout">
+		<ul id="shoesList"></ul>
+	</div>
+	<div id="races" data-role="view" data-title="Races" data-layout="runs-layout"></div>
+
+	<div data-role="drawer" id="my-drawer" style="width: 270px" data-views="['home', 'shoes', 'races']">
+	    <ul data-role="listview" data-type="group">
+	        <li>Kendo Runner
+	            <ul>
+	                <li data-icon="contacts"><a href="#home">Runs</a></li>
+	                <li data-icon="favorites"><a href="#shoes">Shoes</a></li>
+	                <li data-icon="featured"><a href="#races">Races</a></li>
+	                
+	            </ul>
+	        </li>
+	        <li>Tasks
+	            <ul>
+	                <li>Find a Race</li>
+	                <li>Add a Shoe</li>
+	                <li>Add a Run</li>
+	                <li>Order Shoes</li>
+	            </ul>
+	        </li>
+	        <li>Account
+	            <ul>
+	                <li data-icon="settings">Settings</li>
+	                <li data-icon="off">Log Out</li>
+	            </ul>
+	        </li>
+	    </ul>
+	</div>
+
+	<div id="shoe" data-role="view" data-title="Edit Shoe" data-show="initForm" data-use-native-scrolling="true">
+			<div data-role="navbar" id="edit-navbar">
+				<a data-role="backbutton" id="save" data-align="right">Save</a>
+        <span data-role="view-title"></span>
+      	<a data-role="backbutton" id="back" data-align="left">Back</a>
+      </div>
+      <form action="#">
+				<ul data-role="listview">
+					<li>
+						<label>Brand
+							<input type="text" id="shoeBrand" />
+						</label>
+					</li>
+					<li>
+						<label>Name
+							<input type="text" id="shoeName" />
+						</label>
+					</li>
+					<li>
+	          <label>Slider
+	              <span id="sliderVal"></span>
+	              <input id="maxmileage" type="range" min="1" max="500" value="200" />
+	          </label>
+	      	</li>
+	      	<li>
+						<label>ASIN
+							<input type="text" id="shoeAsin" />
+						</label>
+					</li>
+				</ul>
+				<img id="shoeImg" src="#" />
+			</form>
+	</div>
+
+	<script type="text/x-kendo-tmpl" id="runs-template">
+	  <img src="images/runner.png" />
+	  <h2>#: data.Distance #mi in #: data.Duration #</h2>
+	  <h3>#: moment(data.Date).format("MM/DD/YYYY h:mm a") #</h3>
+	</script>
+
+	<script type="text/x-kendo-tmpl" id="shoes-template">
+    <a href="\#shoe?id=#: data.Id #">
+      <img src="https://api.everlive.com/v1/9O9pJYS1ampTPiH9/Files/#: data.Photo #/Download" />
+    	<h2>#: data.Brand #</h2>
+    	<h3>#: data.Name #</h3>
+    </a>
+	</script>
+</body>
+</html>

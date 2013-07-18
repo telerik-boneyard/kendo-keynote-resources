@@ -1,0 +1,17 @@
+﻿@model IList<Q2Demo1.Controllers.Person>
+
+@(Html.Kendo().MobileView()
+    .Name("drawer-friends")
+    .Layout("layout")
+    .Title("Friends")
+    .Content(obj =>
+        Html.Kendo().MobileListView()
+            .Items(items => 
+            {
+                foreach (var item in Model)
+                {
+                    items.Add().Icon("star").Text(item.Name);
+                }
+            })
+    )
+)

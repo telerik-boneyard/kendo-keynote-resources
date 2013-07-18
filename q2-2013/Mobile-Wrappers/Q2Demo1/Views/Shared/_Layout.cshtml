@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+	<head>
+		<title>@ViewBag.Title</title>
+		<link href="@Url.Content("~/Content/kendo/2013.2.626.240/kendo.common.min.css")" rel="stylesheet" type="text/css" />
+	    <link href="@Url.Content("~/Content/kendo/2013.2.626.240/kendo.dataviz.min.css")" rel="stylesheet" type="text/css" />
+	    <link href="@Url.Content("~/Content/kendo/2013.2.626.240/kendo.default.min.css")" rel="stylesheet" type="text/css" />
+	    <link href="@Url.Content("~/Content/kendo/2013.2.626.240/kendo.dataviz.default.min.css")" rel="stylesheet" type="text/css" />
+	    <link href="@Url.Content("~/Content/kendo/2013.2.626.240/kendo.mobile.all.min.css")" rel="stylesheet" type="text/css" />
+	    <script src="@Url.Content("~/Scripts/kendo/2013.2.626.240/jquery.min.js")"></script>
+	    <script src="@Url.Content("~/Scripts/kendo/2013.2.626.240/kendo.all.min.js")"></script>
+	    <script src="@Url.Content("~/Scripts/kendo/2013.2.626.240/kendo.aspnetmvc.min.js")"></script>
+	    <script src="@Url.Content("~/Scripts/kendo.modernizr.custom.js")"></script>
+        <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />		
+</head>
+	<body>
+        @(Html.Kendo().MobileLayout()
+            .Name("layout")
+            .Header(obj =>
+                Html.Kendo().MobileNavBar()
+                    .Content(navbar =>
+                        @<text>
+                            @(Html.Kendo().MobileButton()
+                                .Align(MobileButtonAlign.Left)
+                                .Icon("drawer-button")
+                                .Rel(MobileButtonRel.Drawer)
+                                .Url("#drawer")
+                            )
+
+                            @navbar.ViewTitle("People Viewer!")
+                    </text>)
+            )
+            .Footer(obj =>
+                Html.Kendo().MobileTabStrip()
+                    .Items(items => {
+                        items.Add().Icon("contacts").Text("People");
+                        items.Add().Icon("action").Text("Tasks");
+                    })
+            )
+        )
+
+        @(Html.Kendo().MobileDrawer()
+          .Name("drawer")
+          .HtmlAttributes(new { style = "width: 270px" })
+          .Views("people-viewer", "drawer-friends")
+          .Content(obj => 
+              Html.Kendo().MobileListView().Type("group")
+                  .Items(root => {
+                    root.Add().Text("Tasks").Items(items =>
+                    {
+                      items.AddLink().Icon("home").Url("/home/people").Text("Home");
+                      items.AddLink().Icon("contacts").Url("/home/friends").Text("Friends");
+                      items.Add().Text("Romans");
+                      items.Add().Text("Countrymen"); 
+                    });
+
+                   root.Add().Text("Account").Items(items =>
+                   {
+                     items.Add().Icon("settings").Text("Settings");
+                     items.Add().Icon("off").Text("Log Out");
+                   });
+              })
+           )
+        ) 
+
+		@RenderBody()
+        
+        @(Html.Kendo().MobileApplication()
+            .ServerNavigation(true)
+        )
+
+	</body>
+</html>

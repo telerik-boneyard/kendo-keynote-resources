@@ -1,0 +1,149 @@
+<% layout('../layout') -%>
+
+<h3>Expenses</h3>
+<div id="funnel"></div>
+
+<h3>Sales (Monthly)</h3>
+<div id="boxPlot"></div>
+
+<h3>Sales (Yearly)</h3>
+<div id="stepLine"></div>
+
+<h3>Customer Satisfaction</h3>
+<div id="errorBars"></div>
+
+<script>
+	(function() {
+		"use strict";
+
+		function createFunnel() {
+			var data = [
+				{ category: "Payroll", value: 434823 },
+				{ category: "Products", value: 356854 },
+				{ category: "Building Maintenance", value: 280022 },
+				{ category: "Taxes", value: 190374 },
+				{ category: "Food", value: 120392 }
+			];
+
+			$( "#funnel" ).kendoChart({
+				title: { text: "Los Pollos Expenses (November 2013)" },
+				chartArea: { background: "transparent" },
+				seriesDefaults: {
+					labels: {
+						visible: true,
+						background: "transparent",
+						color: "white",
+						format: "N0"
+					},
+					dynamicSlope: true,
+					dynamicHeight: true
+				},
+				series: [{
+					type: "funnel",
+					data: data
+				}]
+			});
+		};
+
+		function createBoxPlot() {
+			$( "#boxPlot" ).kendoChart({
+				title: {
+					text: "2013 Los Pollos Sales by Month"
+				},
+				series: [{
+					type: "boxPlot",
+					data: [
+						[ 26.2, 38.3, 51, 61.45, 68.9, 49.0,[ 18.3, 72 ] ],
+						[ 26.4, 38.125, 46.8, 60.425, 66.8, 47.3, [18 ] ],
+						[ 31.6, 41.725, 52.35, 62.175, 70.8, 52.3, [] ],
+						[ 34.4, 39.375, 49.9, 61.425, 69.2, 50.3, [ 14, 70 ] ],
+						[ 29.9, 38.35, 50.4, 60.875, 69.7, 49.9, [] ],
+						[ 22.3, 36.875, 48.9, 62.65, 70.3, 49.0, [] ],
+						[ 32.3, 39.5, 54.1, 61.175, 67.3, 50.8, [ 1, 6, 12, 20 ] ],
+						[ 28.5, 36.075, 50.5, 64.2, 70.4, 49.6, [ 10, 12, 13, 15] ],
+						[ 33.6, 40.65, 49.55, 62.8, 69.2, 51.1, [ 2, 4, 5, 6, 10, 12, 18, 21] ],
+						[ 33.6, 38.6, 47.9, 60.825, 67,49.7, [ 14, 72 ] ],
+						[ 31.9, 36.425, 49.3, 61.825, 69.7, 49.4, [ 71 ] ]
+					]
+				}],
+				categoryAxis: {
+					categories: [ "Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov" ],
+					majorGridLines: { visible: false }
+				},
+				valueAxis: {
+					title: {
+						text: "Amount (in thousands of USD)"
+					}
+				}
+			});
+		};
+
+		function createStepLine() {
+			$( "#stepLine" ).kendoChart({
+				title: {
+					text: "Los Pollos Sales by Year"
+				},
+				series: [{
+					type: "line",
+					data: [ 0.5, 5, 15, 5, 12, 4, 13, 20, 30, 10, 23, 38 ],
+					style: "smooth", // step, smooth
+					markers: { visible: false }
+				}],
+				categoryAxis: {
+					title: { text: "Year" },
+					categories: [ "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13" ]
+				},
+				valueAxis: {
+					title: { text: "Revenue (in millions of USD)" },
+					majorGridLines: {
+						visible: false
+					},
+					visible: true
+				}
+			});
+		};
+
+		function createErrorBars() {
+			$( "#errorBars" ).kendoChart({
+				title: {
+					text: "Percentage of Satisfied Customers"
+				},
+				seriesDefaults: {
+					type: "line",
+					errorBars: {
+						value: "percentage(5)"
+					}
+				},
+				series: [{
+					name: "Service",
+					data: [ 72, 68, 64, 58, 72, 60, 45, 60, 82, 70, 71, 64 ]
+				},{
+					name: "Food",
+					data: [ 32, 28, 12, 24, 7, 22, 21, 34, 12, 17, 7, 15 ]
+				}],
+				valueAxis: {
+					labels: { format: "{0}%" }
+				},
+				categoryAxis: {
+					title: { text: "Year" },
+					categories: [ "02", "03", "04", "05", "06", "07", "08", "09", "10", "11", "12", "13" ]
+				},
+				tooltip: {
+					visible: true,
+					format: "{0}%",
+					template: "#= series.name #: #= value #%"
+				}
+			});
+		};
+
+		createFunnel();
+		createBoxPlot();
+		createStepLine();
+		createErrorBars();
+
+		$( window ).on( "resize", function() {
+			kendo.resize( ".k-chart" );
+		});
+
+	}());
+</script>

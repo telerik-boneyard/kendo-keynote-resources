@@ -1,0 +1,29 @@
+extends ../layout
+
+block css
+  link(rel="stylesheet", href="/css/maps.css")
+
+block javascripts
+  script(src="/js/maps.js")
+
+block content
+  .map-example
+    .row
+      .col-sm-12
+        h2 DataViz Map
+    .row
+      .col-sm-3
+        p
+          | Integration with 
+          a(href="http://openstreetmap.org", target="_blank") OpenStreetMap
+          |.
+      .col-sm-3
+        label Show Markers 
+          input#showMarkers(type="checkbox", data-bind="checked: showMarkers, events: {change: createMap}")
+    .row
+      .col-sm-12
+        hr
+    .row
+      .col-sm-10.col-sm-offset-1
+        .map.wrapper
+          #map

@@ -1,0 +1,125 @@
+<% layout('../layout') -%>
+
+<style>
+	#locations label {
+		display: inline-block;
+		width: 100px;
+	}
+	#locations form > div {
+		margin: 2em;
+	}
+	.k-button {
+		padding: 0.4em 0.2em;
+		width: 49%;
+	}
+	.k-progressbar {
+		margin-top: 15px;
+		width: 98%;
+	}
+	@media (max-width: 600px) {
+		.k-datepicker, .k-dropdown, .k-button {
+			width: 100%;
+		}
+	}
+</style>
+
+<h3>Manage Locations</h3>
+
+<div id="locations">
+	<div data-role="progressbar" data-value="false"></div>
+</div>
+
+<script type="text/x-kendo-template" id="location-template">
+	<ul data-role="panelbar">
+		# locations.forEach(function( item ) { #
+			<li>
+				#= item.Address #
+				<div>
+					<form>
+						<input type="hidden" name="Id" value="#= item.Id #">
+						<div>
+							<label for="date-#= item.LocationNumber #">Opened:</label>
+							<input type="date" name="Opened" id="date" data-role="datepicker" value="#= item.Opened #">
+						</div>
+						<div>
+							<label for="manager">Manager:</label>
+							<select for="manager" name="Manager" data-role="dropdownlist">
+								# managers.forEach(function( manager ) { #
+									<option value="#= manager.Id #"
+									  # if ( manager.Id === item.Manager ) { # selected # } #>
+										#= manager.FirstName # #= manager.LastName #
+									</option>
+								# }); #
+							</select>
+						</div>
+						<div>
+							<label for="description">Description:</label>
+							<textarea id="description" data-role="editor" name="Description">
+								#= item.Description #
+							</textarea>
+						</div>
+						<div>
+							<button data-role="button">Update</button>
+							<button data-role="button" data-icon="cancel">Cancel</button>
+						</div>
+					</form>
+				</div>
+			</li>
+		# }); #
+	</ul>
+</script>
+
+<script>
+	$(function() {
+		"use strict";
+
+		kendo.init( document.body );
+
+		var locationContainer = $( "#locations" ),
+			template = kendo.template( $( "#location-template" ).html() );
+
+		function getManagers() {
+			var deferred = $.Deferred();
+			Everlive.$.data( "Managers" ).get().then(function( data ) {
+				deferred.resolve( data.result );
+			});
+			return deferred;
+		};
+
+		function getLocations() {
+			var deferred = $.Deferred();
+			Everlive.$.data( "Locations" ).get().then(function( data ) {
+				deferred.resolve( data.result );
+			});
+			return deferred;
+		};
+
+		function loadData() {
+			$.when( getManagers(), getLocations() ).then(function( managers, locations ) {
+				locationContainer.html( template({ managers: managers, locations: locations }) );
+				kendo.init( locationContainer );
+			});
+		};
+
+		loadData();
+
+		$( document ).on( "submit", "form", function( event ) {
+			event.preventDefault();
+
+			var button = $( this ).find( ".k-button" ).data( "kendoButton" );
+			button.enable( false );
+
+			Everlive.$.data( "Locations" ).updateSingle({
+				Id: this.Id.value,
+				Opened: this.Opened.value,
+				Manager: this.Manager.value,
+				Description: this.Description.value
+			}).then( loadData );
+		});
+
+		$( document ).on( "click", "button[data-icon='cancel']", function() {
+			var panelBar = $( this ).parents( ".k-panelbar" ).data( "kendoPanelBar" );
+			panelBar.collapse( $( this ).parents( "li" ) );
+		});
+	});
+</script>

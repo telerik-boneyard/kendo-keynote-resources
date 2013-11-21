@@ -1,0 +1,58 @@
+extends ../layout
+
+block css
+  link(rel="stylesheet", href="/css/maps.css")
+
+block javascripts
+  script(src="/js/maps-custom-controls.js")
+
+block content
+  .row
+    .col-sm-12
+      h2 DataViz Map
+  .row
+    .col-sm-10
+      p
+        | Integration with 
+        a(href="http://openstreetmap.org", target="_blank") OpenStreetMap
+        |, and custom controls for zoom, and location (latitude / longitutde).
+  .row
+    .col-sm-12
+      hr
+  .row#map-and-controls
+    .col-sm-12
+      .row
+        .col-sm-1
+          h4.pull-right
+            a(href="#", data-bind="click: zoomInClicked")
+              .glyphicon.glyphicon-zoom-in
+            |  / 
+            a(href="#", data-bind="click: zoomOutClicked")
+              .glyphicon.glyphicon-zoom-out
+        .col-sm-11
+          #long-slider(
+            data-role="slider", 
+            data-min="-180", 
+            data-max="180", 
+            data-tick-placement="topLeft",
+            data-large-step="36",
+            data-small-step="0.01",
+            data-bind="value: lng, events: {change: longSliderChanged}"
+            )
+      .row
+        .col-sm-1
+          .pull-right
+            #lat-slider(
+              data-role="slider",
+              data-orientation="vertical",
+              data-min="-90",
+              data-max="90",
+              data-tick-placement="topLeft",
+              data-large-step="9",
+              data-small-step="0.01",
+              data-bind="value: lat, events: {change: latSliderChanged}"
+              )
+        .col-sm-10
+          .map.wrapper
+            #map
+

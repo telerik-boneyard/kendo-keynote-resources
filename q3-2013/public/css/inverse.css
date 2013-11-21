@@ -1,0 +1,159 @@
+html, body { height: 100%; }
+.container { min-height: calc(100% - 200px); }
+
+#nav .navbar {
+  padding-bottom: 0px;
+}
+
+#nav .navbar a.navbar-brand {
+  padding-bottom: 0px;
+}
+
+
+#nav .nav .menu-box {
+  background-color: #040;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 2px 5px;
+  margin: 2px;
+}
+
+#nav .nav > li > a:hover, 
+#nav .nav .open > a
+{
+  color: #fff;
+  background-color: #000;
+}
+
+.dropdown-menu > li > a:hover {
+  background-color: #040;
+}
+
+#nav .navbar h1 {
+  margin: 2px 0px 0px 0px;
+  padding: 0px;
+}
+
+#nav ul.nav.navbar-nav {
+  margin-top: 30px;
+  font-size: 13pt;
+}
+
+li.veritcal-divider {
+  padding: 0px;
+  margin: 10px 0px 0px 0px;
+  height: 35px;
+  width: 1px;
+  border-left: 1px solid #ccc;
+}
+
+.center {
+  text-align: center;
+}
+
+#grid .k-grid-edit {
+  width: 90%;
+}
+
+#employees .k-grid-edit {
+  width: 98%;
+  margin-right: 20px;
+}
+
+#employees .k-grid-update {
+  width: 47%;
+}
+
+#employees .k-grid-cancel {
+  width: 47%;
+}
+
+#employees .k-grid-delete {
+  width: 98%;
+}
+
+.locations-dropdown {
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-header {
+  margin: 0;
+  padding: 0;
+}
+
+.responsive {
+  width: 100%;
+}
+
+/* Grid columns with no width are collapsed if the space is not enough, thus min-width on the tables is needed */
+.k-grid table
+{
+    min-width: 940px;
+}
+
+<<<<<<< HEAD
+.wrapper {
+  height: 100%;
+}
+
+#toggle.navbar-toggle {
+  float: left;
+  margin-left: 10px;
+}
+
+@media screen and (max-width: 767px) {
+
+  /* outer div */
+  .row-offcanvas {
+    position: relative;
+    left: 0;
+    -webkit-transition: left .3s ease-in;
+    -most-transition: left .3s ease-in;
+    transition: left .3s ease-in;
+  }
+
+  /* sidebar */
+  .sidebar-offcanvas {
+    left: -80%;
+    width: 80%;
+    position: absolute;
+    top: 0;
+    background-color: #F7F7F7;
+    height: 100%;
+  }
+
+  /* content */
+  .row-offcanvas.active {
+    left: 80%;
+  }
+
+  .header {
+    min-height: 50px;
+    text-align: center;
+    width: 100%;
+    font-size: 2em;
+  }
+
+  .col-xs-12.no-margin {
+    margin-left: -15px;
+    margin-top: -20px;
+    padding-right: 0px;
+    margin-right: -30px;
+  }
+
+  .k-grid .k-pager-numbers {
+    padding-right: 80px;
+  }
+
+}
+=======
+
+  @media (max-width: 321px) {
+    .k-tool-group:nth-child(4), .k-tool-group:nth-child(5) {
+      display: block;
+      float: left;
+    }
+  }
+>>>>>>> b919dd3f7bd94db92f83ca30c7ea5b7b521b33b3

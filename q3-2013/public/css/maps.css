@@ -1,0 +1,19 @@
+.map.wrapper {
+  border: 1px solid #ccc;
+}
+
+.k-slider-vertical {
+  height: 500px;
+}
+
+.k-slider-horizontal {
+  width: 100%;
+}
+
+.k-slider-track {
+  width: 100%;
+}
+
+#map {
+  height: 500px;
+}

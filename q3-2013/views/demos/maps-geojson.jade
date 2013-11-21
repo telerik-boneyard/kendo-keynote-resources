@@ -1,0 +1,33 @@
+extends ../layout
+
+block css
+  link(rel="stylesheet", href="/css/maps.css")
+
+block javascripts
+  script(src="/chroma/chroma.js")
+  script(src="/js/maps-geojson.js")
+
+block content
+  .row
+    .col-sm-12
+      h2 Other Maps
+  .row
+    .col-sm-3
+      p
+        | Additional map types, from other sources
+    .col-sm-3
+      label Show Map 
+        input#showMap(type="checkbox", checked="checked")
+    .col-sm-3
+      label Show GEO-JSON 
+        input#showGEO(type="checkbox")
+    .col-sm-1
+      label Color Set: 
+    .col-sm-2
+      select.responsive#map-list
+  .row
+    hr
+  .row
+    .col-sm-10.col-sm-offset-1
+      .map.wrapper
+        #map

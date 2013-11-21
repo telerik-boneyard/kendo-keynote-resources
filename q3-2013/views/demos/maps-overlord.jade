@@ -1,0 +1,20 @@
+extends ../layout
+
+block css
+  link(rel="stylesheet", href="/css/maps.css")
+
+block javascripts
+  script(src="/js/maps-overlord.js")
+
+block content
+  .row
+    .col-sm-12
+      h2 DataViz Map + TEH KITTEH!!!
+  .row
+    .col-sm-10
+      p
+        | I, for one, welcome our new feline overlords.
+  .row
+    .col-sm-10.col-sm-offset-1
+      .map.wrapper
+        #map

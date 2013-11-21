@@ -1,0 +1,51 @@
+body {
+  padding: 50px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+img {
+    float: left;
+    width: 5em;
+    margin: 0;
+}
+
+h2 {
+    display: inline-block;
+    font-size: 1.2em;
+    margin-bottom: -20px;
+}
+
+h3 {
+    display: inline-block;
+    font-size: 0.9em;
+}
+
+.km-drawer-button:before, .km-drawer-button:after  { content: "\E077"; }
+.km-sent:before, .km-sent:after { content: "\E0C6"; }
+.km-star:before, .km-star:after { content: "\E0D7"; }
+.km-settings:before, .km-settings:after { content: "\E0DA"; }
+.km-off:before, .km-off:after { content: "\E0B9"; }
+
+#forms input:not([type=checkbox]):not([type=radio]),
+#forms select,
+#forms .k-dropdown
+{
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 50%;
+}
+
+#sliderVal {
+  position: relative;
+  left: 93px;
+}
+
+#shoeImg {
+    display: block;
+    padding-top: 2em; 
+    width: 100%;
+}

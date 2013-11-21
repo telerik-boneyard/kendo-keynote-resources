@@ -1,0 +1,343 @@
+{
+    "id": "kendo-runner",
+    "name": "kendo-runner",
+    "path": "/Users/satrom/Dropbox/Development/kendo-runner",
+    "files": [
+        {
+            "name": "app.js",
+            "type": "js",
+            "lib": false,
+            "deps": [],
+            "id": "33d18a0e-9f17-4049-b3f4-a88220b5cc43"
+        },
+        {
+            "name": "routes/index.js",
+            "type": "js",
+            "lib": false,
+            "deps": [],
+            "id": "d7740d9f-202c-4e2c-a2d5-e297840e7adf"
+        },
+        {
+            "name": "workers/runImporter.js",
+            "type": "js",
+            "lib": false,
+            "deps": [],
+            "id": "5f63eecb-a505-4176-8d9a-5625ad5fffd8"
+        },
+        {
+            "name": "public/javascripts/app.js",
+            "type": "js",
+            "lib": false,
+            "deps": [],
+            "id": "e55a4085-0d0b-46bb-999e-aa6232fc2445"
+        },
+        {
+            "name": "public/stylesheets/style.css",
+            "type": "css",
+            "lib": false,
+            "deps": [],
+            "id": "5db8aa46-e973-40de-8ffa-54ffb3078ab0"
+        },
+        {
+            "name": "public/javascripts/lib/jquery.min.js",
+            "type": "js",
+            "lib": true,
+            "deps": [],
+            "id": "jquery"
+        },
+        {
+            "name": "public/javascripts/lib/kendo.all.min.js",
+            "type": "js",
+            "lib": true,
+            "deps": [],
+            "id": "d0ca2287-d08c-4495-98ad-2ad65cd56a54"
+        },
+        {
+            "name": "public/javascripts/lib/moment.min.js",
+            "type": "js",
+            "lib": true,
+            "deps": [],
+            "id": "b4d1da63-accf-446f-8eb5-82f2917e2bac"
+        },
+        {
+            "name": "public/javascripts/lib/everlive/everlive.all.min.js",
+            "type": "js",
+            "lib": true,
+            "deps": [],
+            "id": "ea69df68-9f8b-459b-8f32-40af1203b421"
+        },
+        {
+            "name": "public/javascripts/lib/everlive/everlive.min.js",
+            "type": "js",
+            "lib": true,
+            "deps": [],
+            "id": "7e724554-05d3-45e6-9e98-d978fd119810"
+        },
+        {
+            "name": "public/javascripts/lib/everlive/kendo.data.everlive.min.js",
+            "type": "js",
+            "lib": true,
+            "deps": [],
+            "id": "3d83c1dd-e320-4c40-bc5e-e9e719674d31"
+        },
+        {
+            "name": "public/javascripts/lib/everlive/reqwest.min.js",
+            "type": "js",
+            "lib": true,
+            "deps": [],
+            "id": "58dab8b1-b2ee-443e-a64c-be67f5a5b51d"
+        },
+        {
+            "name": "public/javascripts/lib/everlive/rsvp.min.js",
+            "type": "js",
+            "lib": true,
+            "deps": [],
+            "id": "c7a4fa6c-70b2-41d3-8887-e7796b4dbc7b"
+        },
+        {
+            "name": "public/javascripts/lib/everlive/underscore.min.js",
+            "type": "js",
+            "lib": true,
+            "deps": [],
+            "id": "41318fcd-26c6-48d3-95f7-b3c72e4d622f"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.black.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "3ccf4ed8-fa31-4ab0-be5a-4e35e63cc45a"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.blueopal.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "3ed4b7ab-272e-4eb2-8ff3-d42413f2f8ce"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.bootstrap.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "38174481-3257-4af2-9d41-eddc30ddc2af"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.common.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "6b156352-17df-46ec-85ad-184b00da9f48"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.dataviz.black.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "b9602ebe-e3c8-413a-bfa9-d33396f000aa"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.dataviz.blueopal.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "e6053b6c-e661-4e11-902c-6d85932dd30d"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.dataviz.bootstrap.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "d05a8fc1-e942-41a3-9a5c-fd6931606668"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.dataviz.default.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "f64aa3ac-2fc8-444b-b26e-7bb139c861ee"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.dataviz.flat.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "674347bf-e2dc-49d8-a983-4b6798811268"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.dataviz.highcontrast.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "c232e426-dd4c-4c63-957b-88cc8257737c"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.dataviz.metro.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "ab7a82b3-ec6a-471c-b66b-47da67816b2f"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.dataviz.metroblack.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "78bc404a-6ebb-4207-ae83-e08ee8d0946d"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.dataviz.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "82b9433c-8bdb-4031-ae5b-1ad7521b7c9f"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.dataviz.moonlight.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "9c301926-6aac-4964-98f7-4dc4f4e5e2e4"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.dataviz.silver.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "8981d397-cc6c-439a-8728-1c96b9143654"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.dataviz.uniform.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "bd134e9b-2be0-4e0c-ad34-46de6039c946"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.default.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "571f16b1-1ef9-4360-b010-c2a426467617"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.flat.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "4bdd042b-e753-40f2-9ac5-e70ced3d3c75"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.highcontrast.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "27ce2c8f-4485-47f7-ba5b-97c913af20cd"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.metro.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "a8cdd803-c37f-4cb6-acd1-4d9ca66526aa"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.metroblack.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "9c47e07e-72ea-45b0-8673-3de4d17bc5fc"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.mobile.all.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "974b04b3-84dd-404a-8681-bda3671daa5e"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.mobile.blackberry.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "8be4dde2-0ced-4d18-986a-2955891ca923"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.mobile.android4.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "51be081b-2295-47e3-a05e-2fd1adb3b901"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.mobile.common.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "b2813642-54b3-4f38-acdb-92bbd7f41f27"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.mobile.flat.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "62b954a2-e60f-42dc-9bd8-e66dafe79cb3"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.mobile.icenium.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "5b05e65f-5665-4160-b64c-e3f7e612857f"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.mobile.ios.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "20a0e81e-a4d6-40b6-adc8-ae076ad3c257"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.mobile.meego.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "cc83c9ef-712e-42f2-acdf-2a019dbd812a"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.mobile.wp8.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "c2e16a6a-0dfb-4651-9ec9-232774481f5d"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.moonlight.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "e330d246-4426-49c3-965f-01b71001a4d6"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.rtl.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "a9c08ae3-ffdd-4e00-8217-acc943412849"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.silver.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "e7dd0949-8b13-454c-ae11-348ecd7230d6"
+        },
+        {
+            "name": "public/stylesheets/lib/kendo/kendo.uniform.min.css",
+            "type": "css",
+            "lib": true,
+            "deps": [],
+            "id": "f00559dc-8aa2-47ee-8260-35115a8c5304"
+        }
+    ]
+}

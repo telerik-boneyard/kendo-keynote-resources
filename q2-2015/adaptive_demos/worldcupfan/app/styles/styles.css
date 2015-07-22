@@ -1,0 +1,125 @@
+
+
+			html{
+				font-family: 'Roboto',sans-serif;
+				height: 100%;
+			}
+            h1{
+            	text-align:center;
+            }
+            body{
+            	margin:0px;
+            }
+            img{
+                max-width:100%;
+            }
+            .submit-button{
+                margin-top:10px;
+            }
+			#body{
+				background-color:rgba(204, 204, 204, 0.24);
+			}
+            a{
+                text-decoration: none;
+                color: #303f9f;
+                font-size: 1em;
+            }
+            .profile{
+                padding-bottom:10px;
+            }
+            .card{
+              padding:10px;
+              border-radius: 5px;
+              background: #fff;
+              -webkit-box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+              box-shadow: 3px 3px 7px rgba(0,0,0,0.3);
+              text-align:center;
+            }
+            /*flexbox*/
+            /* grid */
+            .row {
+              display: flex;
+              flex-flow: row wrap;
+              margin: 0 -10px;
+              margin-bottom: 10px;
+            }
+            .row:last-child {
+              margin-bottom: 0;
+            }
+            [class*="col-"] {
+              padding: 10px;
+              width: 100%;
+            }
+             
+            @media all and ( min-width: 600px ) {
+             
+              /* set col widths */
+              .col-1-4 {
+                width: 25%;
+              }
+              
+            }
+
+            #iconTextButton{
+                float:left;
+            }
+
+            #sidebar {
+                margin: 0;
+                padding: 10px;
+                vertical-align: top;
+                z-index: 1000;
+            }
+
+            @media (max-width: 1000px) {
+                #sidebar {
+                    background: #fff;
+                    border-left: 1px solid #e5e5e5;
+                    position: absolute;
+                    top: 35px;
+                    bottom: 0;
+                }
+
+                #sidebar.k-rpanel-expanded {
+                    box-shadow: 0 0 10px rgba(0,0,0,.3);
+                }
+                img {
+                    max-width: 80%;
+                }
+            }
+
+            /* button with icon */
+
+            .k-button-icontext .k-icon {
+                margin:3px 0px 0px 0px;
+            }
+           
+            #main-content {
+                margin: 0;
+                padding: 10px;
+                min-height: 580px;
+                vertical-align: top;
+            }
+
+
+            /* WIDGETS */
+
+
+            .widget {
+                padding: 10px;
+                background-color: #ffffff;
+                border: 1px solid #e7e7e7;
+                border-radius: 3px;
+            }
+
+            .widget-body {
+                margin: 10px;
+                min-height: 50px;
+            }
+            
+            .widget h3 {
+                padding: 0px 10px 8px 10px;
+                
+            }
+
+       

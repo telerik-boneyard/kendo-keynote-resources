@@ -1,0 +1,33 @@
+<div id="results">
+ 
+    <div class="widget-body">
+
+        <h3>Team Results</h3>
+
+       	<div data-role="chart"
+                 data-legend="{ position: 'bottom' }"
+                 data-series-defaults="{ type: 'line', 'style': 'smooth' }"
+                 data-series="[
+                                 { field: 'wins', name: 'wins' },
+                                 { field: 'losses', name: 'losses' },
+                                 { field: 'draws', name: 'draws' }
+                             ]"
+                 data-bind="source: results"
+                 style="height: 250px;" ></div>
+
+                 <!--<div data-role="chart"
+                 data-title="{ text: 'Winningest Countries', position: 'bottom' }"
+                 data-series-defaults="{ type: 'pie' }"
+                 data-series="[{
+                                field: 'wins',
+                                categoryField: 'country',
+                                padding: 0
+                              }]"
+                 data-bind="source: resultsCharts"
+                 style="height: 250px;" ></div>-->
+    
+    </div>
+                
+</div>
+
+          

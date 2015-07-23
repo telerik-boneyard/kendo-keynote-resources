@@ -1,0 +1,506 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Changelog for Kendo UI v2015.2.703 (July 03, 2015)</title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font: .75em/1.5 Tahoma, sans-serif;
+        }
+
+        h1 {
+            font-size: 2.2em;
+            font-size: normal;
+        }
+
+        h2 {
+            font-size: 2em;
+            font-weight: normal;
+
+            margin: 1.2em 0 .3em;
+            padding-bottom: .2em;
+        }
+
+        .breaking {
+            background-color: #e10c01;
+            color: #fff;
+            border-radius: 3px;
+            padding: 3px 4px;
+            display: inline-block;
+            font-size: 11px;
+            line-height: 1;
+            font-weight: bold;
+        }
+
+        #page {
+            width: 50em;
+            margin: 0 auto 2em;
+            border-radius: 0 0 1em 1em;
+            box-shadow: 0 0 10px #ccc;
+            padding: 1em 2em 2em;
+        }
+
+        .poBoxIcon {
+            float: left;
+            font-size: 2em;
+            margin: 1.2em .5em 0 0;
+        }
+
+        .poTopLine {
+            border-top: 2px solid #e1e1e1;
+            margin: 17px 0 40px 0;
+        }
+    </style>
+
+    <base href="http://www.telerik.com/support/whats-new/kendo-ui-web/release-history">
+</head>
+<body>
+    <div id="page">
+        <h1 class="title">Release notes for Kendo UI v2015.2.703</h1>
+
+        <h1>Components</h1>
+        <div class="tClear poTopLine">
+            <div class="poBoxIconText">
+                <p><strong>What's new</strong></p>
+<ul>
+<li>remove legacy kendoMobileSwipe</li>
+</ul>
+                <p><strong>What's fixed</strong></p>
+<ul>
+<li>kendo.support.zoomLevel() does not return a correct value in IE11 when a vertical scrollbar is present</li>
+<li>Chinese localization for Scheduler is incomplete</li>
+<li>kendo.util.encodeBase64 mangles line endings</li>
+<li>TypeScript definitions are incompatible with jQuery 2.x</li>
+</ul>
+            </div>
+        </div>
+
+
+        <div class="tClear poTopLine">
+            <h2>AngularJS</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Force widget's request when valuePrimitive:true and selected text is not defined</li>
+<li>Upgrade to latest AngularJS 1.3.*</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>ng-model binding does not work when parent scope object is cleared. </li>
+<li>MultiSelect tagTemplate, not compiled against angular scope</li>
+<li>Widget does not select item with value '0'</li>
+<li>Widget does update k-ng-model when primitive values are used</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Application</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Support for "hairline" retina styling (retina option)</li>
+</ul>
+            
+        </div>
+        <div class="tClear poTopLine">
+            <h2>AutoComplete</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Widget throws an exception when dataSource.group method returns undefined</li>
+<li>Rendering issue in virtual mode</li>
+<li>Widget throws an exception when tries to suggest INTs</li>
+<li>Misleading visualization when last character from the selected item is deleted</li>
+<li>Obsolete popup appears with virtualization when there are no suggestions</li>
+<li>Not able to select item when value resolves to an index equal to the length of the first group.</li>
+<li>Widget does not re-create item template when dataTextField is updated</li>
+<li>"change" event is triggered twice</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Calendar</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Calendar shows March 31st grayed in Brazilian time zone</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Chart</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>The highlight.toggle function is not supported for funnel charts</li>
+<li>Chart axis title builder lacks "visual" handler</li>
+<li>Custom label visuals are clipped to pane</li>
+<li>Custom label visuals are not animated</li>
+<li>Donut chart tooltip does not display reliably on tap (Android)</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>ComboBox</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Force widget's request when valuePrimitive:true and selected text is not defined</li>
+<li>Widget should support setting true/false values</li>
+<li>Support for binding to select element with optgroup</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Disabled widget should bind the source when value is set</li>
+<li>Widget throws an exception when dataSource.group method returns undefined</li>
+<li>Widget initialized from a select with an empty option raises change event on blur</li>
+<li>Widget does not set the correct custom value in Firefox when SELECT element is used</li>
+<li>Widget clears the user input on initial data source load</li>
+<li>Rendering issue in virtual mode</li>
+<li>Widget does not display the placeholder in IE9 when value is cleared with the API</li>
+<li>DropDownList displayed text is not updated after data source change</li>
+<li>Widget throws an exception when tries to suggest INTs</li>
+<li>Cascading Dropdownlist does not set value when using Source binding and source is instance of a DataSource</li>
+<li>Widget initialized from SELECT does not remove the placeholder on focus (IE8)</li>
+<li>Widget does not display the placeholder in IE8 when value is cleared with the API</li>
+<li>Widget's list cannot select item from filtered data set after filter is cleared</li>
+<li>After filtering widget's list cannot select item that was selected from filtered data set and is part of the first DataSource page</li>
+<li>Widget does not select item with value '0'</li>
+<li>Obsolete popup appears with virtualization when there are no suggestions</li>
+<li>Not able to select item when value resolves to an index equal to the length of the first group.</li>
+<li>After filtering widget's dropdown is opened if the arrow button is clicked twice, first click only shows a loading process</li>
+<li>Widget does not re-create item template when dataTextField is updated</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>DataSource</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Group item created for the added record in a server grouped with aggregates DataSource does not have default aggregates set</li>
+<li>ODATA parameterMap sends empty $filter argument</li>
+<li>Default implementation of the offline storage should call reader serialize</li>
+<li>Deleted items are duplicated in offline mode</li>
+<li>filter with operator as a function evaluates value as object instead of function</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>DatePicker</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Add default ISO8601 formats to the parseFormats option</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>DateView move method should handle ESC key properly</li>
+<li>Calendar shows March 31st grayed in Brazilian time zone</li>
+<li>"change" event is triggered twice</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>DateTimePicker</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Add default ISO8601 formats to the parseFormats option</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>DateView move method should handle ESC key properly</li>
+<li>Calendar shows March 31st grayed in Brazilian time zone</li>
+<li>"change" event is triggered twice</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Draggable</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>support for draggable `autoScroll` option</li>
+</ul>
+            
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Drawing</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Constructor parameters are missing from TypeScript definitions</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>DropDownList</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Force widget's request when valuePrimitive:true and selected text is not defined</li>
+<li>Widget should support setting true/false values</li>
+<li>Support for binding to select element with optgroup</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Widget triggers cascade event twice when value is set</li>
+<li>Widget does not select correct value on cascade when MVVM binding is used</li>
+<li>Widget does not select the correct item when optionLabel and virtual are defined</li>
+<li>Disabled widget should bind the source when value is set</li>
+<li>Widget throws an exception when dataSource.group method returns undefined</li>
+<li>Not able to select item from DropDownList with virtualization</li>
+<li>First value is assigned when blank DropDonwList with virtualization opened</li>
+<li>Rendering issue in virtual mode</li>
+<li>Virtualized widget does not select correct item on click when list is paged to the middle</li>
+<li>Widget does not show the optionLabel when autoBind is false and value is empty string</li>
+<li>DropDownList displayed text is not updated after data source change</li>
+<li>IE: Validation triggered too soon</li>
+<li>Item not selected accordingly when filtering is performed very quickly</li>
+<li>cascade event is triggered when there is no dataSource</li>
+<li>Widget does not select a dataItem that has value "null" or "" (empty string)</li>
+<li>Cascading Dropdownlist does not set value when using Source binding and source is instance of a DataSource</li>
+<li>Widget does not select item with value '0'</li>
+<li>Widget does update k-ng-model when primitive values are used</li>
+<li>Obsolete popup appears with virtualization when there are no suggestions</li>
+<li>Not able to select item when value resolves to an index equal to the length of the first group.</li>
+<li>Widget does not allow to select last items in the popup on mobile device when filtering is enabled</li>
+<li>Widget does not re-create item template when dataTextField is updated</li>
+<li>Widget scrolls popup content over filter input in mobile device</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Editor</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Allow execute event to be prevented</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Backspace and delete buttons should not work in readonly mode</li>
+<li>Pasting text with tabs is not consistent in different browsers</li>
+<li>Shift + Enter moves the cursor out of the displayable field area</li>
+<li>Editor tools should be able to wrap one by one in Internet Explorer</li>
+<li>Font tags are not converted when pasting from MS Word</li>
+<li>Hitting backspace on full-body selection does not remove selection in Chrome</li>
+<li>JS error when tabbing to focus Editor</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Excel Export</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>footerTemplate function receives aggregates in data.data instead of data</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Gantt</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Limit exported document size to 5080mm x 5080mm to comply with PDF 1.4 standard</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Exporting the day view in Gantt results in a malformed PDF file</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Globalization</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Support for multiple day specifiers </li>
+</ul>
+            
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Grid</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Limit exported document size to 5080mm x 5080mm to comply with PDF 1.4 standard</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Column title is not displayed in the header of the mobile filter menu</li>
+<li>autoFitColumn method does not work correctly when using frozen columns</li>
+<li>autoFitColumn method works incorrectly with grouping and hierarchy</li>
+<li>Error is thrown when adding new record in grouped and aggregated Grid with server operations</li>
+<li>Column resize handler is not position correctly when using hidden columns under IE8</li>
+<li>MultiCheckFilter is not destroyed when dataSource is changed</li>
+<li>footerTemplate function receives aggregates in data.data instead of data</li>
+<li>The getOptions method removes current data source data</li>
+<li>Grid group headers should display encoded values by default</li>
+<li>Bug in showing multiline grid header</li>
+<li>Filter cells are not destroyed when calling setDataSource in scrollable grid</li>
+<li>FilterMenu script file should declare a requirement for kendo.binder.js</li>
+<li>Incorrect navigation in IE when using rtl</li>
+<li>Grid does not focus first visible column in Batch edit mode</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>MVVM</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Force widget's request when valuePrimitive:true and selected text is not defined</li>
+<li>Add CSS class binding feature</li>
+<li>Add data-format support for the MVVM text binding</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Select element with value and source binding causes infinite loop when used in MVVM template</li>
+<li>&lt;select&gt; doesn't update &lt;option&gt; text when MVVM binding changes</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Map</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>panEnd event is fired twice</li>
+<li>click event is fired after panEnd</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>MultiSelect</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Widget should support setting true/false values</li>
+<li>Support for binding to select element with optgroup</li>
+<li>'Single line' rendering mode of the selected tags</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Widget throws an exception when dataSource.group method returns undefined</li>
+<li>Widget with MVVM value binding does not preselect items when autoBind:false is set</li>
+<li>Rendering issue in virtual mode</li>
+<li>An error is thrown when removing an item if autoClose is set to false and the popup has never been opened</li>
+<li>Widget with virtualization throws an exception when try to open popup after filtering</li>
+<li>MultiSelect tagTemplate, not compiled against angular scope</li>
+<li>After filtering widget's list cannot select item that was selected from filtered data set and is part of the first DataSource page</li>
+<li>Obsolete popup appears with virtualization when there are no suggestions</li>
+<li>Not able to select item when value resolves to an index equal to the length of the first group.</li>
+<li>Widget does not re-create item template when dataTextField is updated</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>NumericTextBox</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>"change" event is triggered twice</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>PDF Export</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Russian Ruble sign is missing in exported PDF documents</li>
+<li>proxyTarget option is not taken into account</li>
+<li>Images missing in page template (PDF drawing)</li>
+<li>Wrong parsing of background-image when both url and gradients are present</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Pager</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Display "all" option in pager to allow selecting a page size that equals the total number of records</li>
+</ul>
+            
+        </div>
+        <div class="tClear poTopLine">
+            <h2>PanelBar</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>JavaScript error when all panels of a PanelBar are disabled</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>PivotGrid</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Limit exported document size to 5080mm x 5080mm to comply with PDF 1.4 standard</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Widget does not copy member's fields correctly when fake tuple is created</li>
+<li>PivotGrid does not render the text of a child dimension in IE and Firefox</li>
+<li>IE: 2nd level column name not visible</li>
+<li>Widget breaks when some of the model fields has 'null' value</li>
+<li>PivotGrid freezes when try to delete two dimensions fast enough</li>
+<li>Widget outputs un-formatted data on continues expand/collapse</li>
+<li>Widget does not support 100% height</li>
+<li>Widget does not support rendering a very specific slice of multuple dimensions per axis</li>
+<li>JS exception is thrown when move dimension from row to column</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Scheduler</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Limit exported document size to 5080mm x 5080mm to comply with PDF 1.4 standard</li>
+</ul>
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>SlotByPosition does not return correct slot in IE8</li>
+<li>Scheduler should not reset the view scroll position when selecting an all-day event</li>
+<li>Events background color is not updated when resource value is false</li>
+<li>Recurrence stops one day short of the set date</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Slider</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>Possible to show buttons for RangeSlider</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>TabStrip</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>TabStrip layout is incorrect when using non-default tabPosition and a dataSource</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>TimePicker</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>"change" event is triggered twice</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>ToolBar</h2>
+            <p><strong>What's new</strong></p>
+<ul>
+<li>Add show/hide API methods that allows the user to show/hide ToolBar items</li>
+</ul>
+            
+        </div>
+        <div class="tClear poTopLine">
+            <h2>TreeList</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>TreeList duplicates items when dataSource.read()  is called multiple times.</li>
+<li>TreeList binding throws an error in IE8</li>
+<li>TreeList duplicates nodes when local filtering is applied</li>
+<li>TreeList MVVM initialization</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>TreeView</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>The check event is triggered twice in firefox when checking an indeterminate node</li>
+</ul>
+        </div>
+        <div class="tClear poTopLine">
+            <h2>Window</h2>
+            
+            <p><strong>What's fixed</strong></p>
+<ul>
+<li>kendo window. setOptions resets actions in the maximized state</li>
+<li>Window should restore the page horizontal scroll position after maximize and restore</li>
+</ul>
+        </div>
+    </div>
+</body>
+</html>

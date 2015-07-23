@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<link href="../bower_components/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+
+	<link href="../kendo-ui/styles/kendo.common.min.css" rel="stylesheet">
+	<link href="../kendo-ui/styles/kendo.bootstrap.min.css" rel="stylesheet">
+	<link href="styles.css" rel="stylesheet">
+
+	<script src="../bower_components/jquery/dist/jquery.js"></script>
+	<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+	<script src="../kendo-ui/js/kendo.all.min.js"></script>
+</head>
+<body class="container">
+
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#"><img src='../logo-text.png'></a>
+		</div>
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#schedule">Schedule</a></li>
+				<li><a href="#stats">Stats</a></li>
+				<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">More<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="#join-us">Join Us</a></li>
+						<li><a href="#players">Players</a></li>
+						<li><a href="#pictures">Pictures</a></li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+
+<div class="row">
+	<div class="col-lg-4">
+		<h2>Schedule</h2>
+		<div id="calendar"></div>
+	</div>
+	<div class="well col-lg-8">
+		<h2 class="ra-well-title">Join Us</h2>
+
+		<div class="form-horizontal form-widgets col-sm-6">
+			<div class="form-group">
+				<label class="control-label col-sm-4" for="email">Email</label>
+				<div class="col-sm-8 col-md-6">
+					<input id="email" type="email" class="k-textbox">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-4" for="password">Password</label>
+				<div class="col-sm-8 col-md-6">
+					<input id="password" type="password" class="k-textbox">
+				</div>
+			</div>
+		</div>
+
+		<div class="form-horizontal form-widgets col-sm-6">
+			<div class="form-group">
+				<label class="control-label col-sm-4" for="name">Name</label>
+				<div class="col-sm-8 col-md-6">
+					<input id="name" type="name" class="k-textbox">
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label class="control-label col-sm-4" for="country">Country</label>
+				<div class="col-sm-8 col-md-6">
+					<div class="teams"></div>
+				</div>
+			</div>
+		</div>
+
+		<div class="form-horizontal form-widgets col-sm-12">
+			<div class="form-group">
+				<label class="control-label col-sm-2" for="bio">Short bio</label>
+				<div class="col-sm-10">
+					<textarea id="bio"></textarea>
+				</div>
+			</div>
+		</div>
+
+		<div class="clearfix"></div>
+
+		<div class="buttons-wrap">
+			<button class="k-button k-state-default">Join!</button>
+		</div>
+	</div>
+</div>
+
+<script>
+	var today = new Date();
+	var events = [
+		+new Date(today.getFullYear(), today.getMonth(), 1),
+		+new Date(today.getFullYear(), today.getMonth(), 4),
+		+new Date(today.getFullYear(), today.getMonth(), 6)
+	];
+
+	$("#calendar").kendoCalendar({
+		footer: false,
+		dates: events,
+		month: {
+			content: '# if ($.inArray(+data.date, data.dates) != -1) { #' +
+				'<div class="game">#= data.value #</div>' +
+			 '# } else { #' +
+				'#= data.value #' +
+			 '# } #'
+		}
+	});
+
+	var teams;
+	function getTeam(code) {
+		var pickedTeam;
+		teams.forEach(function(team) {
+			if (team.fifa_code === code) {
+				pickedTeam = team;
+				return;
+			}
+		});
+		return pickedTeam;
+	}
+
+	var flagTemplate = "<span class='k-state-default'><img src='../flags/#: data.fifa_code #.png' class='flag'>#: data.country #</span>";
+	$.getJSON("http://worldcup.sfg.io/teams/results", function(data) {
+		teams = data;
+		$(".teams").kendoDropDownList({
+			dataSource: teams,
+			dataTextField: "country",
+			dataValueField: "fifa_code",
+			valueTemplate: flagTemplate,
+			template: flagTemplate,
+			change: function() {
+				var team = getTeam($("#teams").val());
+				$("#goals-chart").kendoChart({
+					theme: "bootstrap",
+					series: [
+						{ name: "Goals For", data: [team.goals_for] },
+						{ name: "Goals Against", data: [team.goals_against] }
+					]
+				});
+				$("#wins-chart").kendoChart({
+					theme: "bootstrap",
+					series: [{
+						type: "pie",
+						data: [
+							{ category: "Wins", value: team.wins },
+							{ category: "Losses", value: team.losses }
+						]
+					}]
+				})
+			}
+		}).data("kendoDropDownList").trigger("change");
+	});
+
+	$(window).on("resize", function() {
+		kendo.resize($(".k-chart"));
+	});
+
+	$("#calendar").kendoTooltip({
+		filter: ".game",
+		content: function(data) {
+			var day = $(data.target).html();
+			if (day === "1") {
+				return "Japan vs. England";
+			} else if (day === "4") {
+				return "Germany vs. England";
+			} else {
+				return "United States vs. Japan";
+			}
+		},
+		width: 300
+	});
+
+	$("#bio").kendoEditor({
+		tools: [
+			"formatting",
+			"bold", "italic", "underline",
+			"strikethrough", "subscript", "superscript",
+			"justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+			"insertUnorderedList", "insertOrderedList", "indent", "outdent"
+		]
+	});
+</script>
+
+</body>
+</html>

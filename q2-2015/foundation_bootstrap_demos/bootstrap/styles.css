@@ -1,0 +1,85 @@
+.navbar-header img {
+	max-width: 260px;
+	position: relative;
+	top: -10px;
+}
+.k-toolbar .k-overflow-anchor {
+	top: 8px;
+	background: none;
+}
+.flag {
+	display: inline-block;
+	margin-right: 10px;
+	margin-top: -1px;
+}
+.k-calendar td {
+	border-radius: 0;
+}
+.k-calendar .k-content th, .k-calendar .k-content td {
+	text-align: center;
+}
+.columns:not(.heading) {
+	padding: 1em;
+}
+.container {
+	margin-bottom: 0.5em;
+}
+.k-dropdown .k-state-default {
+	background: none;
+}
+#calendar {
+	width: 100%;
+}
+.game {
+	background: red;
+	color: white;
+	text-align: center;
+	border-radius: 5px;
+}
+
+.well {
+	margin-top: 2em;
+	margin-bottom: 2em;
+}
+.ra-well-title {
+    font-size: 1.2857em;
+    line-height: 1.2857em;
+    border-bottom: 1px solid #e7e7e7;
+    margin: -5px -19px 0.8333em;
+    padding: 0 19px 0.7222em;
+}
+.ra-first-name {
+    display: block;
+    margin-top: 0.8571em;
+}
+
+.ra-last-name {
+    display: block;
+    font-size: 1.7143em;
+    line-height: 1.3em;
+}
+
+.ra-position {
+    font-size: 0.8571em;
+    color: #999;
+    padding-bottom: 2em;
+}
+
+.form-group .k-widget,
+.form-group .k-textbox {
+    width: 100%;
+}
+
+.buttons-wrap {
+    border-top: 1px solid #e7e7e7;
+    padding-top: .5em;
+    text-align: right;
+}
+
+.ra-section {
+    margin-bottom: 20px;
+}
+
+.ra-well-overlay {
+    margin: -16px -20px -19px;
+}

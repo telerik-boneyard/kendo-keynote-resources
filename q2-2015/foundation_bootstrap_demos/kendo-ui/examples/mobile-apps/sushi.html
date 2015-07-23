@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sushi</title>
+    <meta charset="utf-8">
+    <link href="../content/shared/styles/examples-offline.css" rel="stylesheet">
+    <link href="../../styles/kendo.common.min.css" rel="stylesheet">
+    <link href="../../styles/kendo.rtl.min.css" rel="stylesheet">
+    <link href="../../styles/kendo.default.min.css" rel="stylesheet">
+    <link href="../../styles/kendo.dataviz.min.css" rel="stylesheet">
+    <link href="../../styles/kendo.dataviz.default.min.css" rel="stylesheet">
+    <script src="../../js/jquery.min.js"></script>
+    <script src="../../js/kendo.all.min.js"></script>
+    <script src="../content/shared/js/console.js"></script>
+    <script>
+                    window.contentPath = "../content/mobile/apps/sushi";
+
+    </script>
+    <script src="../content/mobile/apps/sushi/sushi.js"></script>
+    <link href="../content/mobile/apps/sushi/css/style.css" rel="stylesheet">
+</head>
+<body>
+    
+    
+    <!-- Google Tag Manager -->
+    <noscript>
+        <iframe src="//www.googletagmanager.com/ns.html?id=GTM-6X92" height="0" width="0" style="display: none; visibility: hidden"></iframe>
+    </noscript>
+    <script>(function(w, d, s, l, i) { w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' }); var f = d.getElementsByTagName(s)[0], j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src = '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f); })(window, document, 'script', 'dataLayer', 'GTM-6X92');</script>
+    <!-- End Google Tag Manager -->
+    <div data-role="layout" data-id="default">
+        <header data-role="header">
+        <div data-role="navbar" class="km-accent">
+            <span data-role="view-title"></span>
+            <a class="about-button" data-align="right" href="../../content/mobile/apps/sushi/about.html" data-role="button">About</a>
+        </div>
+        </header>
+
+        <footer data-role="footer" data-id="default">
+        <div data-role="tabstrip">
+            <a href="#!/" data-icon="home">Home</a>
+            <a href="#!menu" data-icon="bookmarks">Our menu</a>
+            <a href="#!cart" data-icon="cart">Cart</a>
+            <a href="#!account" data-icon="contacts">Account</a>
+        </div>
+        </footer>
+    </div>
+
+    <div data-title="Kendo Sushi" data-role="view" id="index" data-url="/" data-layout="default" data-model="viewModel" data-before-show="showHomeView">
+        <ul
+            id="featured"
+            class="item-list"
+            data-type="flat"
+            data-role="listview"
+            data-template="menuTemplate"
+            data-bind="source: dataSource"
+        ></ul>
+    </div>
+
+    <div data-title="Menu" data-role="view" id="menu" data-layout="default" data-model="viewModel" data-show="showMenuView">
+        <ul
+            id="menuList"
+            class="item-list"
+            data-role="listview"
+            data-template="menuTemplate"
+            data-bind="source: dataSource"
+        ></ul>
+    </div>
+
+    <div data-role="view" id="cart" data-layout="default" data-title="Cart" data-model="viewModel" data-show="showCartView">
+        <h2 id="total" data-bind="text: showTotal"></h2>
+        <ul data-role="listview" data-type="group">
+            <li>
+                Products
+                <ul id="cartList"
+                class="item-list"
+                data-template="cartItemTemplate"
+                data-bind="source: added"
+                data-role="listview"></ul>
+            </li>
+            <li>&nbsp;
+                <ul>
+                     <li>
+                     <i></i>
+                     <a id="checkout" data-bind="click: checkout" class="km-justified km-primary km-large" href="#!done" data-role="button">CHECKOUT</a>
+                     </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div data-role="view" id="account" data-layout="default" data-title="My Account">
+        <ul data-role="listview" data-style="inset" data-type="group">
+            <li>
+                Account
+                <ul>
+                    <li>Username<span class="list-item-data">kendoSushi</span></li>
+                    <li>Email<span class="list-item-data">sushi@kendoui.com</span></li>
+                </ul>
+            </li>
+            <li>
+                Notifications
+                <ul>
+                    <li>New products<input type="checkbox" data-role="switch" /></li>
+                    <li>Exclusive promos<input type="checkbox" data-role="switch" checked="checked" /></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <div data-role="view" id="done">
+        <header data-role="header"> <div data-role="navbar"> <span data-role="view-title">Thanks for shopping!</span> </div>
+        </header>
+        <div data-role="content" class="km-insetcontent">
+            <h1 class="km-bold-font">Your sushi is on the way.</h1>
+            <a href="#!cart" data-role="button" class="km-primary">DONE</a>
+        </div>
+    </div>
+
+    <div data-role="view" id="details" data-transition="slide" data-layout="default" data-model="viewModel" data-show="showDetailsView">
+        <header data-role="header">
+        <div data-role="navbar">
+            <a data-role="backbutton" data-align="left">Back</a>
+            <span data-role="view-title">Item Details</span>
+        </div>
+        </header>
+
+        <div data-role="content">
+            <img data-bind="srcPath: currentItem.image" /> <!-- src="../content/images/200/#:image#" -->
+            <h1 data-bind="text: currentItem.name"></h1>
+            <p data-bind="text: currentItem.description" class="details-info"></p>
+            <a class="km-primary km-large" data-role="button" data-bind="click: addToCart">Buy now for <span data-bind="format: currentItem.price"></span></a>
+            <p class="added" data-bind="innerText: currentItem.ordered, visible: showLabel"></p>
+        </div>
+    </div>
+
+    <script id="menuTemplate" type="text/x-kendo-template">
+        <a
+            data-role="listview-link"
+            href="\#!details?id=#:id#">
+            <img src="#: window.contentPath #/images/75/#:image#" class="km-thumbnail" />
+            <h4 class="km-bold-font">#:name#</h4>
+            <p class="added" data-bind="visible: visibleMessage">Item added to cart <span data-bind="text: ordered"></span> times.</p>
+        </a>
+        <a
+            data-role="button"
+            class="km-small"
+            data-bind="click: addToCart"
+            data-item-id="#:id#">#:kendo.toString(price, "c")#</a>
+        
+    </script>
+
+    <script id="cartItemTemplate" type="text/x-kendo-template">
+        <a
+            data-role="listview-link"
+            href="\#!details?id=#:id#">
+            <img src="#: window.contentPath #/images/75/#:image#" class="km-thumbnail" />
+            <h4 class="km-bold-font">#:name# (x #:ordered#)</h4>
+            <p class="added">#:kendo.toString(price * ordered, "c")#</p>
+        </a>
+        <a
+            data-role="button"
+            class="km-icon-button km-primary km-small"
+            data-bind="click: removeItem"
+            data-item-id="#:id#"><span class="km-icon km-delete"></span></a>
+    </script>
+
+    <script>
+        app = new kendo.mobile.Application($(document.body), { transition: "slide", skin: "nova", hashBang: true });
+    </script>
+
+
+    
+</body>
+</html>

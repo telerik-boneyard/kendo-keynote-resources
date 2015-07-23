@@ -1,0 +1,41 @@
+.title-area img {
+	max-width: 260px;
+}
+.large-4 #goals-chart {
+	height: 250px;
+}
+.k-toolbar .k-button {
+	top: 8px;
+}
+.flag {
+	display: inline-block;
+	margin-right: 10px;
+	margin-top: -1px;
+}
+.row {
+	max-width: 80rem;
+}
+.k-calendar td {
+	border-radius: 0;
+}
+.k-calendar .k-content th, .k-calendar .k-content td {
+	text-align: center;
+}
+.columns:not(.heading) {
+	padding: 1em;
+}
+.container {
+	margin-bottom: 0.5em;
+}
+.k-dropdown .k-state-default {
+	background: none;
+}
+#calendar {
+	width: 100%;
+}
+.game {
+	background: red;
+	color: white;
+	text-align: center;
+	border-radius: 5px;
+}

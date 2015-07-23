@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<link href="../bower_components/foundation/css/normalize.css" rel="stylesheet">
+	<link href="../bower_components/foundation/css/foundation.css" rel="stylesheet">
+
+	<link href="../kendo-ui/styles/kendo.common.min.css" rel="stylesheet">
+	<link href="../kendo-ui/styles/kendo.material.min.css" rel="stylesheet">
+	<link href="styles.css" rel="stylesheet">
+
+	<script src="../bower_components/jquery/dist/jquery.js"></script>
+	<script src="../bower_components/foundation/js/foundation.js"></script>
+	<script src="../kendo-ui/js/kendo.all.min.js"></script>
+	<script src="app.js"></script>
+</head>
+<body>
+
+<nav class="top-bar" data-topbar role="navigation">
+	<ul class="title-area">
+		<li class="name">
+			<h1><a href="#"><img src='../logo-text.png'></a></h1>
+		</li>
+		<li class="toggle-topbar"><a href="#"><span>Menu</span></a></li>
+	</ul>
+
+	<section class="top-bar-section">
+		<ul class="right">
+			<li><a href="#schedule">Schedule</a></li>
+			<li><a href="#stats">Stats</a></li>
+			<li class="has-dropdown">
+				<a href="#">More</a>
+				<ul class="dropdown">
+					<li><a href="#join-us">Join Us</a></li>
+					<li><a href="#players">Players</a></li>
+					<li><a href="#pictures">Pictures</a></li>
+				</ul>
+			</li>
+		</ul>
+	</section>
+</nav>
+
+<div class="row">
+	<div class="large-12 columns heading">
+		<div id="toolbar"></div>
+	</div>
+</div>
+<div class="row">
+	<div class="large-4 columns">
+		<h2>Schedule</h2>
+		<div id="calendar"></div>
+	</div>
+	<div class="large-4 columns">
+		<h2>Stats</h2>
+		<div id="teams"></div>
+		<div id="goals-chart"></div>
+	</div>
+	<div class="large-4 columns">
+		<div id="wins-chart"></div>
+	</div>
+</div>
+
+<script>
+	$(document).foundation();
+
+	$("#calendar").kendoCalendar({
+		footer: false,
+		dates: getEvents(),
+		month: {
+			content: '# if ($.inArray(+data.date, data.dates) != -1) { #' +
+				'<div class="game">#= data.value #</div>' +
+			 '# } else { #' +
+				'#= data.value #' +
+			 '# } #'
+		}
+	}).kendoTooltip({
+		filter: ".game",
+		content: function(data) {
+			var day = $(data.target).html();
+			return getMatchName(day);
+		},
+		width: 300
+	});
+
+	$.getJSON("http://worldcup.sfg.io/teams/results", function(data) {
+		teams = data;
+		$("#teams").kendoDropDownList({
+			dataSource: teams,
+			dataTextField: "country",
+			dataValueField: "fifa_code",
+			valueTemplate: flagTemplate,
+			template: flagTemplate,
+			change: function() {
+				var team = getTeam($("#teams").val());
+				$("#goals-chart").kendoChart({
+					theme: "material",
+					series: [
+						{ name: "Goals For", data: [team.goals_for] },
+						{ name: "Goals Against", data: [team.goals_against] }
+					]
+				});
+				$("#wins-chart").kendoChart({
+					theme: "material",
+					series: [{
+						type: "pie",
+						data: [
+							{ category: "Wins", value: team.wins },
+							{ category: "Losses", value: team.losses }
+						]
+					}]
+				})
+			}
+		}).data("kendoDropDownList").trigger("change");
+	});
+</script>
+
+</body>
+</html>

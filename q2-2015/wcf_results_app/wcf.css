@@ -1,0 +1,28 @@
+html,
+body {
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    padding: 10px 0;
+}
+
+h1 {
+    margin: 0 30%;
+}
+
+#filtersBtn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#grid {
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    height: 100%;
+    /* DO NOT USE !important for setting the Grid height! */
+}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jen's Awesome Party Spreadsheet</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    
+    
+    <link href="//kendo.cdn.telerik.com/2015.3.930/styles/kendo.common-nova.min.css" rel="stylesheet">
+    <link href="//kendo.cdn.telerik.com/2015.3.930/styles/kendo.nova.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/custom.css" />
+
+    <script src="js/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="js/faker.min.js"></script>
+
+    <script src="bower_components/everlive/min/everlive.all.min.js"></script>
+
+    
+
+</head>
+<body>
+
+
+    <div class="cake">
+        <div class="plate"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-top"></div>
+        <div class="icing"></div>
+        <div class="drip drip1"></div>
+        <div class="drip drip3"></div>
+        <div class="candle1">
+            <div class="flame1"></div>
+        </div>
+        <div class="candle2">
+            <div class="flame2"></div>
+        </div>
+        <div class="candle3">
+            <div class="flame3"></div>
+        </div>
+        <div class="candle4">
+            <div class="flame4"></div>
+        </div>
+    </div>
+<div class="text">Kendo UI Birthday Party Deliveries!</div>
+
+<div id="example">
+
+    <div id="spreadsheet" style="width: 100%"></div>
+    
+    <script>
+        $(function() {
+            var el = new Everlive({
+                apiKey: 'oUEbTsfEZtk5tvas',
+                scheme: 'https'
+            });       
+           var fieldsExp = {
+                "Id":1,
+                "Description": 1,
+                "Status": 1,
+                "Source": 1
+            };
+            var dataSource = new kendo.data.DataSource({
+                type: 'everlive',
+                transport: {
+                    typeName: 'Deliveries',
+                    read: {
+                        headers: {
+                            "X-Everlive-Fields": JSON.stringify(fieldsExp)
+                            }
+                        }
+                },
+                
+                schema: {
+                    model: { id: Everlive.idField }
+                }
+            });
+
+            $("#spreadsheet").kendoSpreadsheet({
+                columns: 20,
+                rows: 100,
+                sheets: [{
+                    name: "Deliveries",
+                    dataSource: dataSource,
+                    rows: [{
+                        height: 40,
+                        cells: [
+                        {
+                            bold: "true",
+                            background: "#9c27b0",
+                            textAlign: "center",
+                            color: "white"
+                        },{
+                            bold: "true",
+                            background: "#9c27b0",
+                            textAlign: "center",
+                            color: "white"
+                        },{
+                            bold: "true",
+                            background: "#9c27b0",
+                            textAlign: "center",
+                            color: "white"
+                        },{
+                            bold: "true",
+                            background: "#9c27b0",
+                            textAlign: "center",
+                            color: "white"
+                        }]
+                    }],
+                    columns: [
+                        { width: 200 },
+                        { width: 200 },
+                        { width: 200 },
+                        { width: 300 }
+                    ]
+                }]
+            });
+    });
+    </script>
+
+</div>
+
+
+</body>
+</html>

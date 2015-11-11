@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jen's Awesome Party Spreadsheet</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    
+    
+    <link href="//kendo.cdn.telerik.com/2015.3.930/styles/kendo.common-nova.min.css" rel="stylesheet">
+    <link href="//kendo.cdn.telerik.com/2015.3.930/styles/kendo.nova.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/custom.css" />
+
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+   
+    
+
+</head>
+<body>
+
+
+    <div class="cake">
+        <div class="plate"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-top"></div>
+        <div class="icing"></div>
+        <div class="drip drip1"></div>
+        <div class="drip drip3"></div>
+        <div class="candle1">
+            <div class="flame1"></div>
+        </div>
+        <div class="candle2">
+            <div class="flame2"></div>
+        </div>
+        <div class="candle3">
+            <div class="flame3"></div>
+        </div>
+        <div class="candle4">
+            <div class="flame4"></div>
+        </div>
+    </div>
+<div class="text">Kendo UI Birthday Wait Staff</div>
+
+<div id="example">
+        <div id="gantt"></div>
+
+        <style type="text/css">
+
+            /*center treelist cell content vertically*/
+            .k-gantt .k-treelist td
+            {
+                vertical-align: middle;
+            }
+
+            /*hide the resource labels, as they are present in the task template*/
+            .k-gantt .k-resource
+            {
+                display: none;
+            }
+
+            /*style the task template*/
+            .k-task-template {
+                height: 100%;
+                padding: 0 !important;
+            }
+
+            .template {
+                height: 100%;
+                overflow: hidden;
+            }
+
+            .resource-img {
+                float: left;
+                width: 20px;
+                height: 20px;
+                border-radius: 50%;
+                margin: 8px;
+            }
+
+            .wrapper {
+                padding: 8px;
+                color: #fff;
+            }
+
+            .k-task-template .wrapper > * {
+                display: block;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+
+            .title {
+                font-weight: bold;
+                font-size: 13px;
+            }
+
+            .resource {
+                text-transform: uppercase;
+                font-size: 9px;
+                margin-top: .5em;
+            }
+
+            .progress
+            {
+                position: absolute;
+                left: 0;
+                bottom: 0;
+                width: 0%;
+                height: 4px;
+                background: rgba(0, 0, 0, .3);
+            }
+        </style>
+
+        <script id="task-template" type="text/x-kendo-template">
+            # if (resources[0]) { #
+            <div class="template" style="background-color: #= resources[0].color #;">
+                <img class="resource-img" src="/resources/#:resources[0].id#.jpg" alt="#: resources[0].id #" />
+                <div class="wrapper">
+                    <span class="resource">#= resources[0].name #</span>
+                </div>
+            </div>
+            # } else { #
+            <div class="template">
+                <div class="wrapper">
+                    <span class="resource">no resource assigned</span>
+                </div>
+                <div class="progress" style="width:#= (100 * parseFloat(percentComplete)) #%"> </div>
+            </div>
+            # } #
+        </script>
+        <script>
+            $(document).ready(function() {
+                var serviceRoot = "//demos.telerik.com/kendo-ui/service";
+                var tasksDataSource = new kendo.data.GanttDataSource({
+                    transport: {
+                        read: {
+                            url: serviceRoot + "/GanttTasks",
+                            dataType: "jsonp"
+                        },
+                        update: {
+                            url: serviceRoot + "/GanttTasks/Update",
+                            dataType: "jsonp"
+                        },
+                        destroy: {
+                            url: serviceRoot + "/GanttTasks/Destroy",
+                            dataType: "jsonp"
+                        },
+                        create: {
+                            url: serviceRoot + "/GanttTasks/Create",
+                            dataType: "jsonp"
+                        },
+                        parameterMap: function(options, operation) {
+                            if (operation !== "read") {
+                                return { models: kendo.stringify(options.models || [options]) };
+                            }
+                        }
+                    },
+                    schema: {
+                        model: {
+                            id: "id",
+                            fields: {
+                                id: { from: "ID", type: "number" },
+                                orderId: { from: "OrderID", type: "number", validation: { required: true } },
+                                parentId: { from: "ParentID", type: "number", defaultValue: null, validation: { required: true } },
+                                start: { from: "Start", type: "date" },
+                                end: { from: "End", type: "date" },
+                                title: { from: "Title", defaultValue: "", type: "string" },
+                                percentComplete: { from: "PercentComplete", type: "number" },
+                                summary: { from: "Summary", type: "boolean" },
+                                expanded: { from: "Expanded", type: "boolean", defaultValue: true }
+                            }
+                        }
+                    }
+                });
+
+                var dependenciesDataSource = new kendo.data.GanttDependencyDataSource({
+                    transport: {
+                        read: {
+                            url: serviceRoot + "/GanttDependencies",
+                            dataType: "jsonp"
+                        },
+                        update: {
+                            url: serviceRoot + "/GanttDependencies/Update",
+                            dataType: "jsonp"
+                        },
+                        destroy: {
+                            url: serviceRoot + "/GanttDependencies/Destroy",
+                            dataType: "jsonp"
+                        },
+                        create: {
+                            url: serviceRoot + "/GanttDependencies/Create",
+                            dataType: "jsonp"
+                        },
+                        parameterMap: function(options, operation) {
+                            if (operation !== "read") {
+                                return { models: kendo.stringify(options.models || [options]) };
+                            }
+                        }
+                    },
+                    schema: {
+                        model: {
+                            id: "id",
+                            fields: {
+                                id: { from: "ID", type: "number" },
+                                predecessorId: { from: "PredecessorID", type: "number" },
+                                successorId: { from: "SuccessorID", type: "number" },
+                                type: { from: "Type", type: "number" }
+                            }
+                        }
+                    }
+                });
+
+                var gantt = $("#gantt").kendoGantt({
+                    dataSource: tasksDataSource,
+                    dependencies: dependenciesDataSource,
+                    resources: {
+                        field: "resources",
+                        dataColorField: "Color",
+                        dataTextField: "Name",
+                        dataSource: {
+                            transport: {
+                                read: {
+                                    url: serviceRoot + "/GanttResources",
+                                    dataType: "jsonp"
+                                }
+                            },
+                            schema: {
+                                model: {
+                                    id: "id",
+                                    fields: {
+                                        id: { from: "ID", type: "number" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    assignments: {
+                        dataTaskIdField: "TaskID",
+                        dataResourceIdField: "ResourceID",
+                        dataValueField: "Units",
+                        dataSource: {
+                            transport: {
+                                read: {
+                                    url: serviceRoot + "/GanttResourceAssignments",
+                                    dataType: "jsonp"
+                                },
+                                update: {
+                                    url: serviceRoot + "/GanttResourceAssignments/Update",
+                                    dataType: "jsonp"
+                                },
+                                destroy: {
+                                    url: serviceRoot + "/GanttResourceAssignments/Destroy",
+                                    dataType: "jsonp"
+                                },
+                                create: {
+                                    url: serviceRoot + "/GanttResourceAssignments/Create",
+                                    dataType: "jsonp"
+                                },
+                                parameterMap: function(options, operation) {
+                                    if (operation !== "read") {
+                                        return { models: kendo.stringify(options.models || [options]) };
+                                    }
+                                }
+                            },
+                            schema: {
+                                model: {
+                                    id: "ID",
+                                    fields: {
+                                        ID: { type: "number" },
+                                        ResourceID: { type: "number" },
+                                        Units: { type: "number" },
+                                        TaskID: { type: "number" }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    views: [
+                        "day",
+                        { type: "week", selected: true }
+                    ],
+                    columns: [
+                        { field: "title", title: "Title", editable: true, sortable: true },
+                        { field: "resources", title: "Assigned Wait Staff", editable: true }
+                    ],
+                    height: 700,
+                    showWorkHours: false,
+                    showWorkDays: false,
+                    resizable: true,
+                    rowHeight: 62,
+                    taskTemplate: $("#task-template").html(),
+
+                    snap: false
+                }).data("kendoGantt");
+
+                $(document).bind("kendo:skinChange", function() {
+                    gantt.refresh();
+                });
+            });
+        </script>
+    </div>
+
+</body>
+</html>

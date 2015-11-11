@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jen's Awesome Party Charty</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    
+    
+    <link href="//kendo.cdn.telerik.com/2015.3.930/styles/kendo.common-nova.min.css" rel="stylesheet">
+    <link href="//kendo.cdn.telerik.com/2015.3.930/styles/kendo.nova.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/custom.css" />
+
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+   
+
+</head>
+<body>
+
+
+    <div class="cake">
+        <div class="plate"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-top"></div>
+        <div class="icing"></div>
+        <div class="drip drip1"></div>
+        <div class="drip drip3"></div>
+        <div class="candle1">
+            <div class="flame1"></div>
+        </div>
+        <div class="candle2">
+            <div class="flame2"></div>
+        </div>
+        <div class="candle3">
+            <div class="flame3"></div>
+        </div>
+        <div class="candle4">
+            <div class="flame4"></div>
+        </div>
+    </div>
+<div class="text">November Party RSVPs</div>
+
+<div id="example">
+
+    <div class="demo-section k-content wide">
+        <div id="chart"></div>
+    </div>
+    <script>
+        // Sample data
+        var data = [];
+        for (var i = 1; i < 12; i++) {
+          var val = Math.round(Math.random() * 10);
+          data.push({
+            category: "11/" + i,
+            value: val
+          });
+        }
+
+        function createChart() {
+            $("#chart").kendoChart({
+                renderAs: "canvas",
+                dataSource: {
+                    data: data
+                },
+                categoryAxis: {
+                    min: 0,
+                    max: 10,
+                    labels: {
+                        rotation: "auto"
+                    }
+                },
+                series: [{
+                    type: "column",
+                    field: "value",
+                    categoryField: "category"
+                }],
+                pannable: {
+                    lock: "y"
+                },
+                zoomable: {
+                    mousewheel: {
+                        lock: "y"
+                    },
+                    selection: {
+                        lock: "y"
+                    }
+                }
+            });
+        }
+
+        $(document).ready(createChart);
+        $("#example").bind("kendo:skinChange", createChart);
+    </script>
+
+</div>
+
+
+</body>
+</html>

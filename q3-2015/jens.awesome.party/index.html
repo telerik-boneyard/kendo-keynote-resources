@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jen's Awesome Party Spreadsheet Organizer</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    
+    
+    <link href="//kendo.cdn.telerik.com/2015.3.930/styles/kendo.common-nova.min.css" rel="stylesheet">
+    <link href="//kendo.cdn.telerik.com/2015.3.930/styles/kendo.nova.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/custom.css" />
+
+    <script src="bower_components/webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="bower_components/emoji-rain/emoji-rain.html">
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="js/faker.min.js"></script>
+     <!-- Load JSZIP library to enable Excel export -->
+    <script src="http://cdn.kendostatic.com/2015.2.624/js/jszip.min.js"></script>
+
+    
+
+</head>
+<body>
+
+<emoji-rain id="rainmaker" drops="350"></emoji-rain>
+
+    <div class="cake" onClick="rainmaker.start()">
+        <div class="plate"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-top"></div>
+        <div class="icing"></div>
+        <div class="drip drip1"></div>
+        <div class="drip drip3"></div>
+        <div class="candle1">
+            <div class="flame1"></div>
+        </div>
+        <div class="candle2">
+            <div class="flame2"></div>
+        </div>
+        <div class="candle3">
+            <div class="flame3"></div>
+        </div>
+        <div class="candle4">
+            <div class="flame4"></div>
+        </div>
+    </div>
+<div class="text">Happy Birthday, Kendo UI!</div>
+
+<div id="example">
+
+    <div id="spreadsheet" style="width: 100%"></div>
+    
+    <script>
+
+    $(function() {
+
+        $("#spreadsheet").kendoSpreadsheet({
+            excel: {                
+                // Required to enable Excel Export in some browsers
+                proxyURL: "//demos.telerik.com/kendo-ui/serv167,ice/export"
+            },
+            
+            sheets: [
+                {
+                    name: "Guest List",                    
+                    mergedCells: [
+                        "A1:H1"
+                    ],
+                    frozenColumns: 2,
+                    frozenRows: 5,
+                    filter: {
+                      ref: "H2:H12",
+                        columns:[]  
+                    },
+                    columns: [
+                        {width: 100},
+                        {width: 150},
+                        {width: 200},
+                        {width: 200},
+                        {width: 200},
+                        {width: 75},
+                        {width: 75},
+                        {width: 75}
+                    ],
+                    rows: [
+                        {
+                            height: 50,
+                            cells: [
+                                {
+                                    index: 0, value: "Party Guests", fontSize: 25, background: "rgb(218,79,188)",
+                                    textAlign: "center", color: "white"
+                                }
+                            ]
+                        },
+                        {
+                            height: 25,
+                            cells: [
+                                {
+                                    value: "Guest Id", background: "rgb(136,108,204)", textAlign: "center", color: "white"
+                                },
+                                {
+                                    value: "Invited Guest Name", background: "rgb(136,108,204)", textAlign: "center", color: "white"
+                                },
+                                {
+                                    value: "Street Address", background: "rgb(136,108,204)", textAlign: "center", color: "white"
+                                },
+                                {
+                                    value: "City, State, Zip", background: "rgb(136,108,204)", textAlign: "center", color: "white"
+                                },
+                                {
+                                    value: "Email", background: "rgb(136,108,204)", textAlign: "center", color: "white"
+                                },
+                                {
+                                    value: "RSVP", background: "rgb(136,108,204)", textAlign: "center", color: "white"
+                                },
+                                {
+                                    value: "Date RSVP", background: "rgb(136,108,204)", textAlign: "center", color: "white"
+                                },
+                                {
+                                    value: "Num Guests", background: "rgb(136,108,204)", textAlign: "center", color: "white"
+                                }
+                            ]
+                        },
+                        
+                            {
+                                cells: [
+                                    {value: faker.random.number(), textAlign:"center"},
+                                    {value: faker.fake('{{name.lastName}}, {{name.firstName}}')},
+                                    {value: faker.fake('{{address.streetAddress}}')},
+                                    {value: faker.fake('{{address.city}}, {{address.stateAbbr}} {{address.zipCode}}')},
+                                    {value: faker.internet.email()},
+                                    {value: "yes"},
+                                    {value: faker.date.recent(), format: "mmm d"},
+                                    {
+                                    value: "",
+                                    validation: {
+                                        from: 1,
+                                        to: 10,
+                                        comparerType: "between",
+                                        dataType: "number",
+                                        messageTemplate: "Number should be between 1 and 10."
+                                    }
+                                }
+                                ]
+                            },
+                            {
+                                cells: [
+                                    {value: faker.random.number(), textAlign:"center"},
+                                    {value: faker.fake('{{name.lastName}}, {{name.firstName}}')},
+                                    {value: faker.fake('{{address.streetAddress}}')},
+                                    {value: faker.fake('{{address.city}}, {{address.stateAbbr}} {{address.zipCode}}')},
+                                    {value: faker.internet.email()},
+                                    {value: "yes"},
+                                    {value: faker.date.recent(), format: "mmm d"},
+                                    {value: 4}
+                                ]
+                            },
+                            {
+                                cells: [
+                                    {value: faker.random.number(), textAlign:"center"},
+                                    {value: faker.fake('{{name.lastName}}, {{name.firstName}}')},
+                                    {value: faker.fake('{{address.streetAddress}}')},
+                                    {value: faker.fake('{{address.city}}, {{address.stateAbbr}} {{address.zipCode}}')},
+                                    {value: faker.internet.email()},
+                                    {value: ""}
+                                ]
+                            },
+                            {
+                                cells: [
+                                    {value: faker.random.number(), textAlign:"center"},
+                                    {value: faker.fake('{{name.lastName}}, {{name.firstName}}')},
+                                    {value: faker.fake('{{address.streetAddress}}')},
+                                    {value: faker.fake('{{address.city}}, {{address.stateAbbr}} {{address.zipCode}}')},
+                                    {value: faker.internet.email()},
+                                    {value: ""}
+                                ]
+                            },
+                            {
+                                cells: [
+                                    {value: faker.random.number(), textAlign:"center"},
+                                    {value: faker.fake('{{name.lastName}}, {{name.firstName}}')},
+                                    {value: faker.fake('{{address.streetAddress}}')},
+                                    {value: faker.fake('{{address.city}}, {{address.stateAbbr}} {{address.zipCode}}')},
+                                    {value: faker.internet.email()},
+                                    {value: ""}
+                                ]
+                            },
+                            {
+                                cells: [
+                                    {value: faker.random.number(), textAlign:"center"},
+                                    {value: faker.fake('{{name.lastName}}, {{name.firstName}}')},
+                                    {value: faker.fake('{{address.streetAddress}}')},
+                                    {value: faker.fake('{{address.city}}, {{address.stateAbbr}} {{address.zipCode}}')},
+                                    {value: faker.internet.email()},
+                                    {value: ""}
+                                ]
+                            },
+                            {
+                                cells: [
+                                    {value: faker.random.number(), textAlign:"center"},
+                                    {value: faker.fake('{{name.lastName}}, {{name.firstName}}')},
+                                    {value: faker.fake('{{address.streetAddress}}')},
+                                    {value: faker.fake('{{address.city}}, {{address.stateAbbr}} {{address.zipCode}}')},
+                                    {value: faker.internet.email()},
+                                    {value: ""}
+                                ]
+                            },
+                            {   
+                                cells: [
+                                    {value: faker.random.number(), textAlign:"center"},
+                                    {value: faker.fake('{{name.lastName}}, {{name.firstName}}')},
+                                    {value: faker.fake('{{address.streetAddress}}')},
+                                    {value: faker.fake('{{address.city}}, {{address.stateAbbr}} {{address.zipCode}}')},
+                                    {value: faker.internet.email()},
+                                    {value: ""}
+                                ]
+                            },
+                            {   
+                                cells: [
+                                    {value: faker.random.number(), textAlign:"center"},
+                                    {value: faker.fake('{{name.lastName}}, {{name.firstName}}')},
+                                    {value: faker.fake('{{address.streetAddress}}')},
+                                    {value: faker.fake('{{address.city}}, {{address.stateAbbr}} {{address.zipCode}}')},
+                                    {value: faker.internet.email()},
+                                    {value: ""}
+                                ]
+                            },
+                            {
+                                cells: [
+                                    {value: faker.random.number(), textAlign:"center"},
+                                    {value: faker.fake('{{name.lastName}}, {{name.firstName}}')},
+                                    {value: faker.fake('{{address.streetAddress}}')},
+                                    {value: faker.fake('{{address.city}}, {{address.stateAbbr}} {{address.zipCode}}')},
+                                    {value: faker.internet.email()},
+                                    {value: ""}
+                                ]
+                            },
+                            {
+                                height: 50,
+                                index: 14,
+                                cells: [
+                                {
+                                    index: 0
+                                },
+                                {
+                                    index: 1
+                                },
+                                {
+                                    index: 2
+                                },
+                                {
+                                    index: 3
+                                },
+                                {
+                                    index: 4
+                                },
+                                {
+                                    index: 5
+                                },
+                                {
+                                    index: 6, fontSize: 15, value: "Total", textAlign: "right"
+                                },
+                                {
+                                    index: 7, formula: "SUM(H3:H12)",
+                                    
+                                }]
+                            }]
+                    
+                }]
+        });
+    });
+
+    $("#export").click(function(e) {
+        var spreadsheet = $("#spreadsheet").data("kendoSpreadsheet");
+        spreadsheet.saveAsExcel();
+    });
+
+    
+    </script>
+
+</div>
+
+
+</body>
+</html>

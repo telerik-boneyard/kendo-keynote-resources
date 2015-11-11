@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jen's Awesome Party Spreadsheet</title>
+    <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+    
+    
+    <link href="//kendo.cdn.telerik.com/2015.3.930/styles/kendo.common-nova.min.css" rel="stylesheet">
+    <link href="//kendo.cdn.telerik.com/2015.3.930/styles/kendo.nova.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/custom.css" />
+    
+    <script src="js/jquery.min.js"></script>
+    <script src="js/kendo.all.min.js"></script>
+    <script src="js/faker.min.js"></script>
+    
+    <!-- Load JSZIP library to enable Excel export -->
+    <script src="http://cdn.kendostatic.com/2015.2.624/js/jszip.min.js"></script>
+
+</head>
+<body>
+
+    <div class="cake">
+        <div class="plate"></div>
+        <div class="layer layer-middle"></div>
+        <div class="layer layer-top"></div>
+        <div class="icing"></div>
+        <div class="drip drip1"></div>
+        <div class="drip drip3"></div>
+        <div class="candle1">
+            <div class="flame1"></div>
+        </div>
+        <div class="candle2">
+            <div class="flame2"></div>
+        </div>
+        <div class="candle3">
+            <div class="flame3"></div>
+        </div>
+        <div class="candle4">
+            <div class="flame4"></div>
+        </div>
+    </div>
+<div class="text">Kendo UI Birthday Import and Export</div>
+
+<div id="example">
+    
+
+    <input type="file" name="file" id="upload" />
+    <div class="k-widget k-upload k-header k-upload-sync k-upload-empty">
+        
+            <form action="http://demos.telerik.com/kendo-ui/spreadsheet/Download" method="POST">
+                <input type="hidden" id="download-data" name="data" />
+                <input type="hidden" id="download-extension" name="extension" />
+                <div class="k-button k-upload-button">
+                    <input type="submit" class="k-button download" data-extension=".xlsx"><span>Save as XLST</span></input>
+                </div>
+                <div class="k-button k-upload-button">
+                    <input type="submit" class="k-button download" data-extension=".csv"<span>Save as CSV</span></input>
+                </div>
+                <div class="k-button k-upload-button">
+                    <input type="submit" class="k-button download" data-extension=".txt"<span>Save as tab-delimited text</span></input>
+                </div>
+                <div class="k-button k-upload-button">
+                    <input type="submit" class="k-button download" data-extension=".json"<span>Save as JSON</span></input>
+                </div>                 
+            </form>
+        </div>
+    
+      
+    <div id="spreadsheet" style="width: 100%;"></div>
+    
+    <script>
+        $(function() {
+            $("#spreadsheet").kendoSpreadsheet({
+                excel: {
+                    // Required to enable Excel Export in some browsers
+                    proxyURL: "http://demos.telerik.com/kendo-ui/service/export"
+                }
+            });
+
+            var spreadsheet = $("#spreadsheet").data("kendoSpreadsheet");
+
+            $.getJSON()
+                .done(function (sheets) {
+                    spreadsheet.fromJSON({ sheets: sheets });
+                });            
+
+            var ALLOWED_EXTENSIONS = [".xlsx", ".csv", ".txt", ".json"];
+
+            $("#upload").kendoUpload({
+                async: {
+                    saveUrl: ""
+                },
+                multiple: false,
+                localization: {
+                    "select": "Select file to import..."
+                },
+                select: function(e) {
+                    var extension = e.files[0].extension.toLowerCase();
+                    if (ALLOWED_EXTENSIONS.indexOf(extension) == -1) {
+                        alert("Please, select a supported file format");
+                        e.preventDefault();
+                    }
+                },
+                success: function(e) {
+                    // Load the converted document into the spreadsheet
+                    spreadsheet.fromJSON(e.response);
+                }
+            });
+
+            $(".download").click(function () {
+                $("#download-data").val(JSON.stringify(spreadsheet.toJSON()));
+                $("#download-extension").val($(this).data("extension"));
+            });
+        });
+    </script>
+
+</div>
+
+
+</body>
+</html>

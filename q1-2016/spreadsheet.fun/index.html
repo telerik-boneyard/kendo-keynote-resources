@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Potholes!</title>
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href="//kendo.cdn.telerik.com/2016.1.112/styles/kendo.common-nova.min.css" rel="stylesheet">
+    <link href="//kendo.cdn.telerik.com/2016.1.112/styles/kendo.nova.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles/custom.css" />
+    <script src="js/jquery.min.js"></script>
+    <script src="js/jszip.min.js"></script>
+    <script src="//kendo.cdn.telerik.com/2016.1.112/js/kendo.all.min.js"></script>
+    <script src="//kendo.cdn.telerik.com/2016.1.112/js/messages/kendo.messages.ar-AR.min.js"></script>
+</head>
+
+<body>
+
+
+ <h1>Potholes in Boston</h1>
+    
+    <h2>Case...closed!</h2>
+
+
+
+<div id="exampleWrap">
+
+    <div id="example">
+        
+        <!--<div class="box wide">
+            <div class="box-col">
+                <h4>Export</h4>
+                <form action="http://demos.telerik.com/kendo-ui/spreadsheet/Download" method="POST">
+                    <input type="hidden" id="download-data" name="data" />
+                    <input type="hidden" id="download-extension" name="extension" />
+                    <ul>
+                        <li><input type="submit" class="k-button download" data-extension=".xlsx" value="Save as XLSX" /></li>
+                        <li><input type="submit" class="k-button download" data-extension=".csv" value="Save as CSV" /></li>
+                        <li><input type="submit" class="k-button download" data-extension=".txt" value="Save as Tab-delimited text" /></li>
+                        <li><input type="submit" class="k-button download" data-extension=".json" value="Save as JSON" /></li>
+                    </ul>
+                </form>
+            </div>
+            <div class="box-col">
+                <h4>Import</h4>
+                <input type="file" name="file" id="upload" />
+            </div>
+        </div>-->
+    
+        <div id="spreadsheet" style="width: 100%"></div>
+    
+    </div>
+
+
+    
+   <script>
+  	$(function () {
+            
+      var buildColumns = function(fieldsList) {
+        var columns = [];
+        for (var key in fieldsList) {
+          columns.push({
+            field: fieldsList[key],
+            title: key
+          });
+        }
+        return columns;
+      }
+      
+      var dataSource = new kendo.data.DataSource({
+        transport: {
+          read: {
+            url: "https://data.cityofboston.gov/resource/wivc-syw7.json?$limit=200&case_title=Request For Pothole Repair",
+            dataType: "json"         	
+          }
+        },
+        schema: {
+          parse: function(data) {
+           fields = {
+                Case: "case_title",
+                Reason:"closure_reason",
+                Neighborhood: "neighborhood",
+                Location: "location",
+                Latitude: "latitude",
+                Longitude: "longitude",
+                Open: "open_dt",
+                Closed: "closed_dt"
+            }; 
+            
+            return data;
+          }
+        }
+      });
+                
+      var spreadsheet = $("#spreadsheet").kendoSpreadsheet({
+        columns: 8,
+        rows: 200,
+        excel: {
+            // Required to enable Excel Export in some browsers
+            proxyURL: "http://demos.telerik.com/kendo-ui/service/export"
+        },
+        sheets: [{
+          name: "Potholes",
+          rows: [{
+            height: 40,
+            cells: [
+              {
+                bold: "true",
+                background: "#C8CEE4",
+                textAlign: "center",
+                color: "#3A3D4C"
+              }, {
+                bold: "true",
+                background: "#C8CEE4",
+                textAlign: "center",
+                color: "#3A3D4C"
+              }, {
+                bold: "true",
+                background: "#C8CEE4",
+                textAlign: "center",
+                color: "#3A3D4C"
+              }, {
+                bold: "true",
+                background: "#C8CEE4",
+                textAlign: "center",
+                color: "#3A3D4C"
+              }, {
+                bold: "true",
+                background: "#C8CEE4",
+                textAlign: "center",
+                color: "#3A3D4C"
+              }, {
+                bold: "true",
+                background: "#C8CEE4",
+                textAlign: "center",
+                color: "#3A3D4C"
+              }, {
+                bold: "true",
+                background: "#C8CEE4",
+                textAlign: "center",
+                color: "#3A3D4C"
+              },{
+                bold: "true",
+                background: "#C8CEE4",
+                textAlign: "center",
+                color: "#3A3D4C"
+              }]
+          }],
+          filter: {
+            ref: "A1:H200",
+            columns:[]
+          },
+          columns: [
+            { width: 200 },
+            { width: 200 },
+            { width: 200 },
+            { width: 200 },
+            { width: 100 },
+            { width: 100 },
+            { width: 200 },
+            { width: 200 }
+          ]
+        }]
+      }).data("kendoSpreadsheet");
+      
+      dataSource.one("change", function() {
+        spreadsheet.activeSheet().setDataSource(dataSource, buildColumns(fields));
+      });
+      
+      dataSource.read();
+      
+           
+
+     /*var ALLOWED_EXTENSIONS = [".xlsx", ".csv", ".txt", ".json"];
+
+      
+            $("#upload").kendoUpload({
+                async: {
+                    saveUrl: ""
+                },
+                multiple: false,
+                localization: {
+                    "select": "Select file to import..."
+                },
+                select: function(e) {
+                    var extension = e.files[0].extension.toLowerCase();
+                    if (ALLOWED_EXTENSIONS.indexOf(extension) == -1) {
+                        alert("Please, select a supported file format");
+                        e.preventDefault();
+                    }
+                },
+                success: function(e) {
+                    console.log(e.response)
+                    // Load the converted document into the spreadsheet
+                    spreadsheet.fromJSON(e.response);
+                }
+            });
+
+            $(".download").click(function () {
+                $("#download-data").val(JSON.stringify(spreadsheet.toJSON()));
+                $("#download-extension").val($(this).data("extension"));
+            });*/
+            
+            
+    });
+  </script>
+</div>
+
+
+</body>
+</html>

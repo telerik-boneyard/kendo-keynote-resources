@@ -1,0 +1,211 @@
+
+body {
+  background-color: #3A3D4C;
+}
+#example{
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+}
+h1{
+    font: 40px "Raleway", sans-serif;
+    color: #FBF6FA;
+}
+h2{
+    font: 20px "Raleway", sans-serif;
+    color: #FBF6FA;
+}
+/*Nova override*/
+.k-tabstrip-items {
+    background-image: none;
+    background-image: none,-webkit-gradient(linear,left top,left bottom,from(#B4B8C3),to(#B4B8C3)) !important;
+    /* background-image: none,-webkit-linear-gradient(top,#303553 0,#072138 100%); */
+    /* background-image: none,linear-gradient(to bottom,#303553 0,#072138 100%); */
+}
+.k-tabstrip-top>.k-tabstrip-items .k-item.k-state-active, .k-tabstrip-top>.k-tabstrip-items .k-item.k-state-hover, .k-spreadsheet .k-spreadsheet-quick-access-toolbar .k-button:hover, .k-spreadsheet .k-spreadsheet-sheets-bar .k-button:hover {
+    background-image: none;
+    background-image: none,-webkit-gradient(linear,left top,left bottom,from(#E8E7E3),to(#E8E7E3)) !important;
+    background-image: none,-webkit-linear-gradient(top,#E8E7E3 0,#E8E7E3 100%) !important;
+    background-image: none,linear-gradient(to bottom,#E8E7E3 0,#E8E7E3 100%) !important;
+    border-bottom-color: #3A3D4C !important;
+}
+.download { width: 260px; }
+
+/* Box Styles */
+ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.box {
+    background-color: #EEE;
+    border: 1px solid #CCC;
+    padding:10px;
+    ;
+}
+.box-col {
+    display: block;
+    float: left;
+    padding: 0 3em 1.667em 0;
+}
+.demo-section {
+    margin: 0 auto 4.5em;
+    padding: 3em;
+    border: 1px solid rgba(20,53,80,0.14);
+}
+
+.demo-section:not(.wide),
+#exampleWrap .box:not(.wide) {
+    max-width: 400px;
+}
+
+.box:after,
+.demo-section:after {
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+}
+
+#exampleWrap .box {
+    margin: 4.5em auto;
+}
+
+#example .box:first-child {
+    margin-top: 0;
+}
+
+.demo-section.k-content {
+    box-shadow: 0 1px 2px 1px rgba(0,0,0,.08), 0 3px 6px rgba(0,0,0,.08);
+}
+
+.box h4,
+.demo-section h4 {
+    margin-bottom: 1em;
+    font-size: 12px;
+    line-height: 1em;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.box-col {
+    display: block;
+    float: left;
+    padding: 0 3em 1.667em 0;
+}
+
+.box ul:not(.km-widget) li,
+.demo-section .box-col ul:not(.km-widget) li {
+    line-height: 3em;
+}
+
+.box li:last-child {
+    margin-bottom: 0;
+}
+
+.box li a {
+    font-size: 13px;
+}
+
+.box .k-widget {
+    background-color: #ebeef0;
+    border-color: #ccc;
+    color: #7c7c7c;
+}
+.box .k-widget.k-slider {
+    background-color: transparent;
+}
+
+.box .k-button {
+    cursor: pointer;
+    border-radius: 2px;
+    font-size: inherit;
+    color: #333;
+    background: #e2e4e7;
+    border-color: #e2e4e7;
+    min-width: 90px;
+    box-shadow: none;
+}
+
+.box .k-upload-status .k-button-bare {
+    min-width: 0;
+}
+
+.box .k-button:hover,
+.box .k-button:focus:active:not(.k-state-disabled):not([disabled]),
+.box .k-button:focus:not(.k-state-disabled):not([disabled]) {
+    background: #cad0d6;
+    border-color: #cad0d6;
+    color: #000;
+    box-shadow: none;
+}
+
+.box .k-primary {
+    color: #fff;
+    background: #015991;
+    border-color: #015991;
+}
+
+.box .k-primary:hover,
+.box .k-primary:focus:active:not(.k-state-disabled):not([disabled]),
+.box .k-primary:focus:not(.k-state-disabled):not([disabled]) {
+    background: #013A5E;
+    border-color: #013A5E;
+    color: #fff;
+}
+
+.box .k-textbox,
+.box textarea {
+    background: #fff;
+    border-color: #e2e4e7;
+    color: #555;
+    border-radius: 2px;
+}
+
+.box .k-textbox:hover,
+.box .k-textbox:active,
+.box .k-textbox:focus,
+.box textarea:hover,
+.box textarea:active,
+.box textarea:focus {
+    border-color: #cad0d6;
+    background: #fff;
+    color: #333;
+    box-shadow: none;
+}
+
+.box.demo-description p {
+    line-height: 1.5em;
+    max-width: 1000px;
+    padding-bottom: 1em;
+}
+
+.box.demo-description p:last-child {
+    padding-bottom: 0;
+}
+
+.box.demo-description ul,
+.box.demo-description ul li {
+    list-style: disc inside;
+    line-height: 1.5em;
+    max-width: 1000px;
+}
+
+.box.demo-description ol,
+.box.demo-description ol li {
+    list-style: decimal inside;
+    line-height: 1.5em;
+    max-width: 1000px;
+}
+
+.box.demo-description ul,
+.box.demo-description ol {
+    margin: 1em;
+    padding: 0;
+}
+
+.demo-hint {
+    line-height: 22px;
+    color: #aaa;
+    font-style: italic;
+    font-size: .9em;
+    padding-top: 1em;
+}
